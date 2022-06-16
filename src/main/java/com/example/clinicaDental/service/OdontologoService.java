@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public class OdontologoService {
-    private IDao<Odontologo> odontologoDao = new OdontologoDao();
+    private static IDao<Odontologo> odontologoDao = new OdontologoDao();
 
     public OdontologoService() {
     }
@@ -25,7 +25,7 @@ public class OdontologoService {
         return odontologoDao.buscarTodos();
     }
 
-    public Odontologo buscarOdontologo(Long id) {
+    public static Odontologo buscarOdontologo(Long id) {
         return odontologoDao.buscar(id);
     }
 

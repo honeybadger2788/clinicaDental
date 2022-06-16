@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class PacienteService {
-    private IDao<Paciente> pacienteDao = new PacienteDao();
+    private static IDao<Paciente> pacienteDao = new PacienteDao();
 
     public PacienteService() {
     }
@@ -26,7 +26,7 @@ public class PacienteService {
         return pacienteDao.buscarTodos();
     }
 
-    public Paciente buscarPaciente(Long id) {
+    public static Paciente buscarPaciente(Long id) {
         return pacienteDao.buscar(id);
     }
 

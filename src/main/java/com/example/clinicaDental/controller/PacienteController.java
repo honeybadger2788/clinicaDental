@@ -1,11 +1,12 @@
 package com.example.clinicaDental.controller;
 
+import com.example.clinicaDental.model.Odontologo;
 import com.example.clinicaDental.model.Paciente;
 import com.example.clinicaDental.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +24,10 @@ public class PacienteController {
     @GetMapping
     public List<Paciente> getPacientes() {
         return pacienteService.listarPacientes();
+    }
+
+    @PostMapping("/crear")
+    public ResponseEntity cargarPaciente(@RequestBody Paciente paciente) {
+        return new ResponseEntity<Paciente>(pacienteService.cargarPaciente(paciente), HttpStatus.CREATED);
     }
 }

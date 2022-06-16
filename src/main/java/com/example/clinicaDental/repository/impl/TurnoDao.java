@@ -1,26 +1,35 @@
 package com.example.clinicaDental.repository.impl;
 
-import com.example.clinicaDental.repository.IDao;
+import com.example.clinicaDental.model.Odontologo;
+import com.example.clinicaDental.model.Paciente;
 import com.example.clinicaDental.model.Turno;
+import com.example.clinicaDental.repository.IDaoTurno;
+import com.example.clinicaDental.service.OdontologoService;
+import com.example.clinicaDental.service.PacienteService;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TurnoDao implements IDao<Turno> {
-    private List<Turno> turnos = new ArrayList<>();
+public class TurnoDao implements IDaoTurno<Turno> {
+    private final List<Turno> turnos = new ArrayList<>();
 
     public TurnoDao() {
     }
 
     @Override
-    public Turno cargar(Turno turno){
+    public Turno cargar(Long id, LocalDate fechaTurno, LocalTime horaTurno, Long idP, Long idO){
+        Paciente paciente = PacienteService.buscarPaciente(idP);
+        Odontologo odontologo = OdontologoService.buscarOdontologo(idO);
+        Turno turno = new Turno(id, fechaTurno, horaTurno, paciente, odontologo);
         turnos.add(turno);
         return turno;
     }
 
     @Override
     public void eliminar(Long id) {
-        turnos.removeIf(turno -> turno.getId() == id);
+        turnos.removeIf(turno -> turno.getId().equals(id));
     }
 
     @Override
@@ -28,7 +37,7 @@ public class TurnoDao implements IDao<Turno> {
         Turno t1 = null;
         for (Turno turno: turnos
         ) {
-            if (turno.getId() == id) {
+            if (turno.getId().equals(id)) {
                 t1 = turno;
             }
         }
