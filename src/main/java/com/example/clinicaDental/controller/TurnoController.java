@@ -1,32 +1,29 @@
 package com.example.clinicaDental.controller;
 
-import com.example.clinicaDental.entity.Turno;
-import com.example.clinicaDental.service.TurnoService;
+import com.example.clinicaDental.dto.TurnoDTO;
+import com.example.clinicaDental.service.ITurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Collection;
 
 @RestController
 @RequestMapping("turnos")
 public class TurnoController {
 
-    private final TurnoService turnoService;
-
     @Autowired
-    public TurnoController(TurnoService turnoService) {
-        this.turnoService = turnoService;
-    }
+    public ITurnoService turnoService;
 
     @GetMapping
-    public List<Turno> getTurnos() {
+    public Collection<TurnoDTO> getTurnos() {
         return turnoService.listarTurnos();
     }
 
     @PostMapping("/crear")
-    public ResponseEntity cargarTurno(@RequestBody Turno turno) {
-        return new ResponseEntity<Turno>(turnoService.cargarTurno(turno), HttpStatus.CREATED);
+    public ResponseEntity cargarTurno(@RequestBody TurnoDTO turnoDTO) {
+        turnoService.cargarTurno(turnoDTO);
+        return new ResponseEntity<>("Turno creado con exito", HttpStatus.CREATED);
     }
 }

@@ -27,7 +27,7 @@ public class Paciente {
 
     // si se elimina al paciente, se elimina también su domicilio
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idDireccion", referencedColumnName = "id")
+    @JoinColumn(name = "idDomicilio", referencedColumnName = "id")
     private Domicilio domicilio;
 
     @OneToMany(mappedBy ="paciente",fetch = FetchType.LAZY)
