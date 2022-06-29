@@ -1,12 +1,13 @@
 package com.example.clinicaDental.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "domicilios")
 public class Domicilio {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Long id;
     private String calle;
     private int numero;

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-@Table(name="urnos")
+@Table(name="turnos")
 public class Turno {
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
