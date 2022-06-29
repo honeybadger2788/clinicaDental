@@ -1,10 +1,24 @@
-package com.example.clinicaDental.model;
+package com.example.clinicaDental.entity;
 
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name="odontologos")
 public class Odontologo {
+    @Id
+    @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Long id;
+    @Column(unique = true)
     private String matricula;
+    @Column
     private String nombre;
+    @Column
     private String apellido;
+
+    @OneToMany(mappedBy = "odontologo", fetch = FetchType.LAZY)
+    private Set<Turno> turnos = new HashSet<>();
 
     public Odontologo() {
     }
@@ -15,19 +29,8 @@ public class Odontologo {
         this.apellido = apellido;
     }
 
-    public Odontologo(Long id, String matricula, String nombre, String apellido) {
-        this.id = id;
-        this.matricula = matricula;
-        this.nombre = nombre;
-        this.apellido = apellido;
-    }
-
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getMatricula() {

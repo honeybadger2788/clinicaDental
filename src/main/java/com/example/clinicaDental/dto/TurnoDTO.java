@@ -1,40 +1,16 @@
-package com.example.clinicaDental.model;
+package com.example.clinicaDental.dto;
+
+import com.example.clinicaDental.entity.Odontologo;
+import com.example.clinicaDental.entity.Paciente;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Turno {
-    private Long id;
+public class TurnoDTO {
     private LocalDate fechaTurno;
     private LocalTime horaTurno;
     private Paciente paciente;
     private Odontologo odontologo;
-
-    public Turno() {
-    }
-
-    public Turno(LocalDate fechaTurno, LocalTime horaTurno, Paciente paciente, Odontologo odontologo) {
-        this.fechaTurno = fechaTurno;
-        this.horaTurno = horaTurno;
-        this.paciente = paciente;
-        this.odontologo = odontologo;
-    }
-
-    public Turno(Long id, LocalDate fechaTurno, LocalTime horaTurno, Paciente paciente, Odontologo odontologo) {
-        this.id = id;
-        this.fechaTurno = fechaTurno;
-        this.horaTurno = horaTurno;
-        this.paciente = paciente;
-        this.odontologo = odontologo;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public LocalDate getFechaTurno() {
         return fechaTurno;

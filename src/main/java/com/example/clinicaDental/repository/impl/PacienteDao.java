@@ -1,11 +1,13 @@
 package com.example.clinicaDental.repository.impl;
 
 import com.example.clinicaDental.repository.IDao;
-import com.example.clinicaDental.model.Paciente;
+import com.example.clinicaDental.entity.Paciente;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class PacienteDao implements IDao<Paciente> {
     private List<Paciente> pacientes = new ArrayList<>();
 

@@ -1,7 +1,7 @@
 package com.example.clinicaDental.service;
 
 import com.example.clinicaDental.repository.IDao;
-import com.example.clinicaDental.model.Paciente;
+import com.example.clinicaDental.entity.Paciente;
 import com.example.clinicaDental.repository.impl.PacienteDao;
 import org.springframework.stereotype.Service;
 
