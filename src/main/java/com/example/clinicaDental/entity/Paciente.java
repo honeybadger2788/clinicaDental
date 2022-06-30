@@ -12,33 +12,35 @@ import java.util.Set;
 // @Getter @Setter para que los genere el framework automaticamente
 public class Paciente {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String apellido;
     private String nombre;
     @Column(unique = true)
     private String dni;
     private String email;
+
+    // la fecha de ingreso se guardará por defecto con la fecha de creación del paciente
     private LocalDate fechaIngreso;
 
-    // si se elimina al paciente, se elimina también su domicilio
+    //al poner el cascade si se elimina al paciente, se elimina también su domicilio
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idDomicilio", referencedColumnName = "id")
     private Domicilio domicilio;
 
-    @OneToMany(mappedBy ="paciente",fetch = FetchType.LAZY)
-    @JsonIgnore
+    @OneToMany(mappedBy ="paciente")
+    @JsonIgnore // para evitar un bucle infinito por usar el mapper y al tratarse de una relacion bidireccional
     private Set<Turno> turnos = new HashSet<>();
 
     public Paciente() {
     }
 
-    public Paciente(String apellido, String nombre, String dni, String email, LocalDate fechaIngreso, Domicilio domicilio) {
+    public Paciente(String apellido, String nombre, String dni, String email, Domicilio domicilio) {
         this.apellido = apellido;
         this.nombre = nombre;
         this.dni = dni;
         this.email = email;
-        this.fechaIngreso = fechaIngreso;
+        this.fechaIngreso = LocalDate.now();
         this.domicilio = domicilio;
     }
 
@@ -83,7 +85,7 @@ public class Paciente {
     }
 
     public void setFechaIngreso(LocalDate fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
+        this.fechaIngreso = LocalDate.now();
     }
 
     public Domicilio getDomicilio() {

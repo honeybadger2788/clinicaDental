@@ -1,6 +1,7 @@
 package com.example.clinicaDental.controller;
 
 import com.example.clinicaDental.dto.PacienteDTO;
+import com.example.clinicaDental.entity.Paciente;
 import com.example.clinicaDental.service.IPacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,5 +29,12 @@ public class PacienteController {
     public ResponseEntity cargarPaciente(@RequestBody PacienteDTO pacienteDTO) {
         pacienteService.cargarPaciente(pacienteDTO);
         return new ResponseEntity<>("Paciente creado con exito", HttpStatus.CREATED);
+    }
+
+    // se deberán ingresar tanto los campos a editar como los que se quieren preservar
+    @PutMapping("/editar")
+    public ResponseEntity editarPaciente(@RequestBody Paciente paciente){
+        pacienteService.actualizarPaciente(paciente);
+        return new ResponseEntity<>("Paciente actualizado con exito", HttpStatus.ACCEPTED);
     }
 }

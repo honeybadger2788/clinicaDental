@@ -1,6 +1,7 @@
 package com.example.clinicaDental.controller;
 
 import com.example.clinicaDental.dto.TurnoDTO;
+import com.example.clinicaDental.entity.Turno;
 import com.example.clinicaDental.service.ITurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,5 +26,11 @@ public class TurnoController {
     public ResponseEntity cargarTurno(@RequestBody TurnoDTO turnoDTO) {
         turnoService.cargarTurno(turnoDTO);
         return new ResponseEntity<>("Turno creado con exito", HttpStatus.CREATED);
+    }
+
+    @PutMapping("/editar")
+    public ResponseEntity cargarTurno(@RequestBody Turno turno){
+        turnoService.actualizarTurno(turno);
+        return new ResponseEntity<>("Turno actualizado con exito", HttpStatus.ACCEPTED);
     }
 }

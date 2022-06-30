@@ -3,29 +3,31 @@ package com.example.clinicaDental.entity;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name="turnos")
 public class Turno {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private LocalDate fechaTurno;
-    private LocalTime horaTurno;
+
+    private String horaTurno;
 
     // el FetchType.LAZY viene por defecto, podriamos obviarlo
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     // el en caso de tener una base de datos existente, debemos ingresar el name que figura en la misma
     @JoinColumn(name = "idPaciente", nullable = false)
     private Paciente paciente;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "idOdontologo", nullable = false)
     private Odontologo odontologo;
 
     public Turno() {
     }
 
-    public Turno(LocalDate fechaTurno, LocalTime horaTurno, Paciente paciente, Odontologo odontologo) {
+    public Turno(LocalDate fechaTurno,String horaTurno, Paciente paciente, Odontologo odontologo) {
         this.fechaTurno = fechaTurno;
         this.horaTurno = horaTurno;
         this.paciente = paciente;
@@ -44,12 +46,13 @@ public class Turno {
         this.fechaTurno = fechaTurno;
     }
 
-    public LocalTime getHoraTurno() {
+    public String getHoraTurno() {
         return horaTurno;
     }
 
     public void setHoraTurno(LocalTime horaTurno) {
-        this.horaTurno = horaTurno;
+        DateTimeFormatter myFormatTime = DateTimeFormatter.ofPattern("HH:mm:ss");
+        this.horaTurno = horaTurno.format(myFormatTime);
     }
 
     public Paciente getPaciente() {
@@ -73,7 +76,7 @@ public class Turno {
         return "Turno{" +
                 "id=" + id +
                 ", fechaTurno=" + fechaTurno +
-                ", horaTurno=" + horaTurno +
+                ", horaTurno='" + horaTurno + '\'' +
                 ", paciente=" + paciente +
                 ", odontologo=" + odontologo +
                 '}';

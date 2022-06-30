@@ -8,14 +8,14 @@ import java.util.Set;
 @Table(name="odontologos")
 public class Odontologo {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
     private String matricula;
     private String nombre;
     private String apellido;
 
-    @OneToMany(mappedBy = "odontologo", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "odontologo")
     private Set<Turno> turnos = new HashSet<>();
 
     public Odontologo() {

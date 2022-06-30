@@ -51,4 +51,9 @@ public class TurnoService implements ITurnoService {
         Turno turno = mapper.convertValue(turnoDTO, Turno.class);
         turnoRepository.save(turno);
     }
+
+    @Override
+    public void actualizarTurno(Turno turno) {
+        turnoRepository.save(turno);
+    }
 }

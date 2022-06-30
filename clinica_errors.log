@@ -1,0 +1,1 @@
+2022-06-30 15:38:07 ERROR GlobalExceptionHandler:21 - could not execute statement; SQL [n/a]; constraint [FK1M8W9IMSJBNCQEK8560HHPWDL]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
