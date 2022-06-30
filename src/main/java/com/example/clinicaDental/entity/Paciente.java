@@ -14,15 +14,11 @@ public class Paciente {
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Long id;
-    @Column
     private String apellido;
-    @Column
     private String nombre;
     @Column(unique = true)
     private String dni;
-    @Column
     private String email;
-    @Column
     private LocalDate fechaIngreso;
 
     // si se elimina al paciente, se elimina también su domicilio

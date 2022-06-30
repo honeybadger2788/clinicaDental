@@ -12,9 +12,7 @@ public class Odontologo {
     private Long id;
     @Column(unique = true)
     private String matricula;
-    @Column
     private String nombre;
-    @Column
     private String apellido;
 
     @OneToMany(mappedBy = "odontologo", fetch = FetchType.LAZY)

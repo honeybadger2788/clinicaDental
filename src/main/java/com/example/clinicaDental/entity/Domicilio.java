@@ -21,7 +21,11 @@ public class Domicilio {
         this.provincia = provincia;
     }
 
-    public Domicilio(Domicilio domicilio) {
+    public Domicilio() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getCalle() {
@@ -59,7 +63,8 @@ public class Domicilio {
     @Override
     public String toString() {
         return "Domicilio{" +
-                "calle='" + calle + '\'' +
+                "id=" + id +
+                ", calle='" + calle + '\'' +
                 ", numero=" + numero +
                 ", localidad='" + localidad + '\'' +
                 ", provincia='" + provincia + '\'' +

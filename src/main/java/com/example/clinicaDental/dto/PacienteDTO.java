@@ -12,5 +12,6 @@ public class PacienteDTO {
     private String dni;
     private String email;
     private LocalDate fechaIngreso;
+    // todo como hacer para que use un domicilioDTO
     private Domicilio domicilio;
 }

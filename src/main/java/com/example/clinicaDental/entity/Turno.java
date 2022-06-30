@@ -10,9 +10,7 @@ public class Turno {
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Long id;
-    @Column
     private LocalDate fechaTurno;
-    @Column
     private LocalTime horaTurno;
 
     // el FetchType.LAZY viene por defecto, podriamos obviarlo
