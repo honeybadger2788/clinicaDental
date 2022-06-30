@@ -40,6 +40,7 @@ public class Paciente {
         this.nombre = nombre;
         this.dni = dni;
         this.email = email;
+        // está bien ponerlo acá?
         this.fechaIngreso = LocalDate.now();
         this.domicilio = domicilio;
     }
@@ -85,7 +86,10 @@ public class Paciente {
     }
 
     public void setFechaIngreso(LocalDate fechaIngreso) {
-        this.fechaIngreso = LocalDate.now();
+        if(fechaIngreso == null)
+            this.fechaIngreso = LocalDate.now();
+        else
+            this.fechaIngreso = fechaIngreso;
     }
 
     public Domicilio getDomicilio() {
