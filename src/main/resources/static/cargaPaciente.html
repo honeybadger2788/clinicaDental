@@ -6,51 +6,54 @@
   <title>Pacientes</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/1283047e01.js" crossorigin="anonymous"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="sweetalert2.all.min.js"></script>
   <link rel="stylesheet" href="../css/shards.min.css">
-  <script type="text/javascript" src="/js/"></script>
+  <script type="text/javascript" src="/js/create_paciente.js"></script>
 </head>
 <body class="bg-dark">
 <nav class="nav nav-pills nav-fill p-3">
-  <a class="nav-link" href="#">Volver</a>
-  <a class="nav-link" href="#">Pacientes</a>
+  <a class="nav-link" href="/index.html">Volver</a>
+  <a class="nav-link" href="/listPacientes.html">Pacientes</a>
 </nav>
 <div class="container p-3">
-  <h2 class="h2 p-3 text-white">Carga de Pacientes</h2>
-  <form method="post">
+  <h2 class="h2 p-3 text-white">Cargar Paciente</h2>
+  <form>
     <div class="mb-3">
-      <label class="text-white">Apellido</label>
-      <input type="text" class="form-control">
+      <label class="text-white" for="apellido">Apellido</label>
+      <input id="apellido" type="text" class="form-control">
     </div>
 
     <div class="mb-3">
-      <label class="text-white">Nombre</label>
-      <input type="text" class="form-control">
+      <label class="text-white" for="nombre">Nombre</label>
+      <input id="nombre" type="text" class="form-control">
     </div>
 
     <div class="mb-3">
-      <label class="text-white">DNI</label>
-      <input type="text" class="form-control">
+      <label class="text-white" for="dni">DNI</label>
+      <input id="dni" type="text" class="form-control">
     </div>
 
     <div class="mb-3">
-      <label class="text-white">Email</label>
-      <input type="email" class="form-control">
+      <label class="text-white" for="email">Email</label>
+      <input id="email" type="email" class="form-control">
     </div>
 
     <label class="text-white">Domicilio</label>
     <div class="input-group mb-3">
       <span class="input-group-text">Calle</span>
-      <input type="text" class="form-control">
+      <input id="calle" type="text" class="form-control">
       <span class="input-group-text">Numero</span>
-      <input type="number" class="form-control">
+      <input id="numero" type="number" class="form-control">
       <span class="input-group-text">Localidad</span>
-      <input type="text" class="form-control">
+      <input id="localidad" type="text" class="form-control">
       <span class="input-group-text">Provincia</span>
-      <input type="text" class="form-control">
+      <input id="provincia" type="text" class="form-control">
     </div>
 
-    <button class="btn btn-light" type="submit">GUARDAR</button>
+    <button id="myBtn" class="btn btn-primary" type="submit" onclick="save()">GUARDAR</button>
 
   </form>
 </div>

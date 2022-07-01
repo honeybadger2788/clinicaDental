@@ -1,6 +1,7 @@
 window.addEventListener('load',() => {
 const urlPacientes = '/pacientes'
 const urlOdontologos = '/odontologos'
+const urlTurnos = '/turnos/crear'
 
 const requestOptions = {
   method: 'GET'
