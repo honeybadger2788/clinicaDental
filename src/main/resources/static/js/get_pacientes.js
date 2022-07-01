@@ -19,8 +19,8 @@ fetch(url, requestOptions)
                                 ' '+paciente.domicilio.numero+
                                 ', '+paciente.domicilio.localidad+
                                 ', '+paciente.domicilio.provincia+'</td>'+
-                             '<td><button type="button" class="btn btn-light">Editar</button></td>'+
-                             '<td><button type="button" class="btn btn-light">Borrar</button></td>'+
+                             '<td><button type="button" class="btn btn-light" onclick="showFormPaciente('+paciente.id+')"><i class="bi bi-pencil-square"></i></button></td>'+
+                             '<td><button type="submit" class="btn btn-light" onclick="deletePaciente('+paciente.id+')"><i class="bi bi-trash3"></i></button></td>'+
                          '</tr>'
         document.getElementById("pacientes").innerHTML += element
     }

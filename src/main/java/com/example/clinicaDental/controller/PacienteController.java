@@ -1,7 +1,6 @@
 package com.example.clinicaDental.controller;
 
 import com.example.clinicaDental.dto.PacienteDTO;
-import com.example.clinicaDental.entity.Paciente;
 import com.example.clinicaDental.service.IPacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,5 +35,11 @@ public class PacienteController {
     public ResponseEntity editarPaciente(@RequestBody PacienteDTO pacienteDTO){
         pacienteService.actualizarPaciente(pacienteDTO);
         return new ResponseEntity<>("Paciente actualizado con exito", HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity eliminarPaciente(@PathVariable Long id){
+        pacienteService.eliminarPaciente(id);
+        return new ResponseEntity<>("Paciente eliminado con exito", HttpStatus.ACCEPTED);
     }
 }

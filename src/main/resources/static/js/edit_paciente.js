@@ -1,11 +1,12 @@
-function save() {
+function save(id) {
 event.preventDefault() // para que no recargue la página
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
-const url = '/pacientes/crear'
+const url = '/pacientes/editar'
 
 const formData = {
+    id,
     nombre: document.querySelector('#nombre').value,
     apellido: document.querySelector('#apellido').value,
     dni: document.querySelector('#dni').value,
@@ -19,7 +20,7 @@ const formData = {
 }
 
 const requestOptions = {
-  method: 'POST',
+  method: 'PUT',
   headers: myHeaders,
   body: JSON.stringify(formData),
 }
@@ -34,7 +35,10 @@ fetch(url, requestOptions)
             showConfirmButton: false,
             timer: 1500
         })
-        .then(result => location.reload())
+        .then(result => {
+            // document.getElementById("form").classList.toggle("d-none")
+            location.reload()
+        })
   })
   .catch(error =>
     Swal.fire({
@@ -44,4 +48,3 @@ fetch(url, requestOptions)
     })
   )
 }
-

@@ -5,3 +5,5 @@ insert into pacientes (id, apellido, dni, id_domicilio, email, fecha_ingreso, no
 insert into pacientes (id, apellido, dni, id_domicilio, email, fecha_ingreso, nombre) values (default, ?, ?, ?, ?, ?, ?) [23505-212]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
 2022-06-30 22:51:31 ERROR GlobalExceptionHandler:21 - could not execute statement; SQL [n/a]; constraint ["PUBLIC.UK_HOL387X0OURGRUYNYQEWDHV37_INDEX_E ON PUBLIC.PACIENTES(DNI NULLS FIRST) VALUES ( /* 3 */ '40.456.788' )"; SQL statement:
 insert into pacientes (id, apellido, dni, id_domicilio, email, fecha_ingreso, nombre) values (default, ?, ?, ?, ?, ?, ?) [23505-212]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2022-07-01 15:14:40 ERROR GlobalExceptionHandler:21 - Request method 'DELETE' not supported
+2022-07-01 15:16:40 ERROR GlobalExceptionHandler:21 - Request method 'DELETE' not supported
