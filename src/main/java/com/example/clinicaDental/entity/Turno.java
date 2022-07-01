@@ -1,7 +1,6 @@
 package com.example.clinicaDental.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -11,7 +10,7 @@ public class Turno {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-    private LocalDate fechaTurno;
+    private String fechaTurno;
 
     private String horaTurno;
 
@@ -27,7 +26,7 @@ public class Turno {
     public Turno() {
     }
 
-    public Turno(LocalDate fechaTurno,String horaTurno, Paciente paciente, Odontologo odontologo) {
+    public Turno(String fechaTurno,String horaTurno, Paciente paciente, Odontologo odontologo) {
         this.fechaTurno = fechaTurno;
         this.horaTurno = horaTurno;
         this.paciente = paciente;
@@ -38,11 +37,11 @@ public class Turno {
         return id;
     }
 
-    public LocalDate getFechaTurno() {
+    public String getFechaTurno() {
         return fechaTurno;
     }
 
-    public void setFechaTurno(LocalDate fechaTurno) {
+    public void setFechaTurno(String fechaTurno) {
         this.fechaTurno = fechaTurno;
     }
 
@@ -51,7 +50,7 @@ public class Turno {
     }
 
     public void setHoraTurno(LocalTime horaTurno) {
-        DateTimeFormatter myFormatTime = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter myFormatTime = DateTimeFormatter.ofPattern("HH:mm");
         this.horaTurno = horaTurno.format(myFormatTime);
     }
 

@@ -1,4 +1,4 @@
-function showFormPaciente (id) {
+function getPaciente (id) {
     const url = '/pacientes/'+id
 
     const requestOptions = {

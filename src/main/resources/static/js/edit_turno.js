@@ -1,22 +1,16 @@
 function save(id) {
-event.preventDefault() // para que no recargue la página
+event.preventDefault()
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
-const url = '/pacientes/editar'
+const url = '/turnos/editar'
 
 const formData = {
     id,
-    nombre: document.querySelector('#nombre').value,
-    apellido: document.querySelector('#apellido').value,
-    dni: document.querySelector('#dni').value,
-    email: document.querySelector('#email').value,
-    domicilio: {
-        calle: document.querySelector('#calle').value,
-        numero: document.querySelector('#numero').value,
-        localidad: document.querySelector('#localidad').value,
-        provincia: document.querySelector('#provincia').value,
-    }
+    fechaTurno: document.querySelector('#fechaTurno').value,
+    horaTurno: document.querySelector('#horaTurno').value,
+    paciente: { id: document.querySelector('#paciente').value },
+    odontologo: { id: document.querySelector('#odontologo').value },
 }
 
 const requestOptions = {

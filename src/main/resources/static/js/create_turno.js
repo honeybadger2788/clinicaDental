@@ -1,30 +1,41 @@
-window.addEventListener('load',() => {
-const urlPacientes = '/pacientes'
-const urlOdontologos = '/odontologos'
-const urlTurnos = '/turnos/crear'
+function save() {
+event.preventDefault()
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+const url = '/turnos/crear'
+
+const formData = {
+    fechaTurno: document.querySelector('#fechaTurno').value,
+    horaTurno: document.querySelector('#horaTurno').value,
+    paciente: { id: document.querySelector('#paciente').value },
+    odontologo: { id: document.querySelector('#odontologo').value },
+}
 
 const requestOptions = {
-  method: 'GET'
-};
+  method: 'POST',
+  headers: myHeaders,
+  body: JSON.stringify(formData),
+}
 
-fetch(urlPacientes, requestOptions)
-  .then(response => response.json())
-  .then(data => {
-    for( paciente of data){
-        const element =  '<option value=\"'+paciente.id+'\">'+paciente.dni+' - '+paciente.apellido+', '+paciente.nombre+'</option>'
-        document.getElementById("pacientes").innerHTML += element
-    }
+fetch(url, requestOptions)
+  .then(response => response.text())
+  .then(result => {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: result,
+            showConfirmButton: false,
+            timer: 1500
+        })
+        .then(result => location.reload())
   })
-  .catch(error => console.log('error', error));
-
-  fetch(urlOdontologos, requestOptions)
-    .then(response => response.json())
-    .then(data => {
-      for( odontologo of data){
-          const element =  '<option value=\"'+odontologo.id+'\">'+odontologo.matricula+' - '+odontologo.apellido+', '+odontologo.nombre+'</option>'
-          document.getElementById("odontologos").innerHTML += element
-      }
+  .catch(error =>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.message,
     })
-    .catch(error => console.log('error', error));
-})
+  )
+}
 

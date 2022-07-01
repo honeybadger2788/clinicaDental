@@ -30,5 +30,17 @@ public class OdontologoController {
         odontologoService.cargarOdontologo(odontologoDTO);
         return new ResponseEntity<>("Odontologo creado con exito", HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteOdontologo(@PathVariable Long id) {
+        odontologoService.eliminarOdontologo(id);
+        return new ResponseEntity<>("Odontologo eliminado con exito", HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping("/editar")
+    public ResponseEntity editarOdontologo(@RequestBody OdontologoDTO odontologoDTO) {
+        odontologoService.actualizarOdontologo(odontologoDTO);
+        return new ResponseEntity<>("Odontologo actualizado con exito", HttpStatus.CREATED);
+    }
 }
 

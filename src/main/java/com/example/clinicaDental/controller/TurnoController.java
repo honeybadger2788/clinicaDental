@@ -29,8 +29,19 @@ public class TurnoController {
     }
 
     @PutMapping("/editar")
-    public ResponseEntity actualizarTurno(@RequestBody TurnoDTO turnoDTO){
+    public ResponseEntity editarTurno(@RequestBody TurnoDTO turnoDTO){
         turnoService.actualizarTurno(turnoDTO);
         return new ResponseEntity<>("Turno actualizado con exito", HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity getTurno(@PathVariable Long id) {
+        return new ResponseEntity<>(turnoService.buscarTurno(id), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteTurno(@PathVariable Long id) {
+        turnoService.eliminarTurno(id);
+        return new ResponseEntity<>("Turno eliminado con exito", HttpStatus.ACCEPTED);
     }
 }
