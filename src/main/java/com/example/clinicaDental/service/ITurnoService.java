@@ -15,5 +15,5 @@ public interface ITurnoService {
 
     public void cargarTurno(TurnoDTO turnoDTO);
 
-    public void actualizarTurno(Turno turno);
+    public void actualizarTurno(TurnoDTO turnoDTO);
 }

@@ -46,7 +46,8 @@ public class OdontologoService implements IOdontologoService {
     }
 
     @Override
-    public void actualizarOdontologo(Odontologo odontologo) {
+    public void actualizarOdontologo(OdontologoDTO odontologoDTO) {
+        Odontologo odontologo = mapper.convertValue(odontologoDTO, Odontologo.class);
         odontologoRepository.save(odontologo);
     }
 

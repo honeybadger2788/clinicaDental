@@ -12,7 +12,7 @@ public interface IOdontologoService {
 
     public Collection<OdontologoDTO> listarOdontologos();
 
-    public void actualizarOdontologo(Odontologo odontologo);
+    public void actualizarOdontologo(OdontologoDTO odontologoDTO);
 
     public void eliminarOdontologo(Long id);
 }

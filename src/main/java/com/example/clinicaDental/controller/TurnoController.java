@@ -29,8 +29,8 @@ public class TurnoController {
     }
 
     @PutMapping("/editar")
-    public ResponseEntity cargarTurno(@RequestBody Turno turno){
-        turnoService.actualizarTurno(turno);
+    public ResponseEntity actualizarTurno(@RequestBody TurnoDTO turnoDTO){
+        turnoService.actualizarTurno(turnoDTO);
         return new ResponseEntity<>("Turno actualizado con exito", HttpStatus.ACCEPTED);
     }
 }

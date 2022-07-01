@@ -61,8 +61,8 @@ public class PacienteService implements IPacienteService {
     }
 
     @Override
-    public void actualizarPaciente(Paciente paciente){
-        // en este caso pasamos el paciente completo ya que necesitamos el id para actualizar
+    public void actualizarPaciente(PacienteDTO pacienteDTO){
+        Paciente paciente = mapper.convertValue(pacienteDTO, Paciente.class);
         pacienteRepository.save(paciente);
     }
 

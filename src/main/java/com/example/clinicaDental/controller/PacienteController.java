@@ -33,8 +33,8 @@ public class PacienteController {
 
     // se deberán ingresar tanto los campos a editar como los que se quieren preservar
     @PutMapping("/editar")
-    public ResponseEntity editarPaciente(@RequestBody Paciente paciente){
-        pacienteService.actualizarPaciente(paciente);
+    public ResponseEntity editarPaciente(@RequestBody PacienteDTO pacienteDTO){
+        pacienteService.actualizarPaciente(pacienteDTO);
         return new ResponseEntity<>("Paciente actualizado con exito", HttpStatus.ACCEPTED);
     }
 }

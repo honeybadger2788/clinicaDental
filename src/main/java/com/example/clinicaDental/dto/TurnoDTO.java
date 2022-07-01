@@ -9,6 +9,7 @@ import java.time.LocalTime;
 
 @Getter @Setter
 public class TurnoDTO {
+    private Long id;
     private LocalDate fechaTurno;
     private LocalTime horaTurno;
     private Paciente paciente;

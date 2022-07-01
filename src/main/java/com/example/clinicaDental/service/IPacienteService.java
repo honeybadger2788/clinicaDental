@@ -12,7 +12,7 @@ public interface IPacienteService {
 
     public Collection<PacienteDTO> listarPacientes();
 
-    public void actualizarPaciente(Paciente paciente);
+    public void actualizarPaciente(PacienteDTO pacienteDTO);
 
     public void eliminarPaciente(Long id);
 }
