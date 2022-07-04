@@ -20,3 +20,4 @@ delete from dentists where id=? [23503-212]]; nested exception is org.hibernate.
 2022-07-04 12:39:16 ERROR GlobalExceptionHandler:21 - Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "null"
 2022-07-04 12:39:35 ERROR GlobalExceptionHandler:21 - Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "null"
 2022-07-04 12:48:34 ERROR GlobalExceptionHandler:21 - Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "null"
+2022-07-04 13:47:34 ERROR GlobalExceptionHandler:21 - could not execute statement; SQL [n/a]; constraint [FKSACQRYBIDDB8SJX5SDR5204HW]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement

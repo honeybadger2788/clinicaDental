@@ -87,6 +87,10 @@ public class Patient {
             this.admissionDate = admissionDate;
     }
 
+    public LocalDate getAdmissionDate() {
+        return admissionDate;
+    }
+
     public Address getAddress() {
         return address;
     }

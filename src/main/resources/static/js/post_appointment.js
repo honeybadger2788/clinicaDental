@@ -8,8 +8,8 @@ const url = '/appointments/add'
 const formData = {
     dateAppointment: document.querySelector('#fechaTurno').value,
     timeAppointment: document.querySelector('#horaTurno').value,
-    patient: { id: document.querySelector('#paciente').value },
-    dentist: { id: document.querySelector('#odontologo').value },
+    patient: { id: document.querySelector('#patient').value },
+    dentist: { id: document.querySelector('#dentist').value },
 }
 
 const requestOptions = {
