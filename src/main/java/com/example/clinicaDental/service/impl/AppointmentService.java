@@ -14,7 +14,7 @@ import java.util.*;
 public class AppointmentService implements IAppointmentService {
 
     @Autowired
-    IAppointmentRepository turnoRepository;
+    IAppointmentRepository appointmentRepository;
 
     @Autowired
     ObjectMapper mapper;
@@ -22,39 +22,39 @@ public class AppointmentService implements IAppointmentService {
 
     @Override
     public Collection<AppointmentDTO> listAppointments() {
-        Set<AppointmentDTO> turnosDTO = new HashSet<>();
-        List<Appointment> appointments = turnoRepository.findAll();
+        Set<AppointmentDTO> appointmentDTO = new HashSet<>();
+        List<Appointment> appointments = appointmentRepository.findAll();
         for (Appointment appointment :
                 appointments) {
-            turnosDTO.add(mapper.convertValue(appointment, AppointmentDTO.class));
+            appointmentDTO.add(mapper.convertValue(appointment, AppointmentDTO.class));
         }
-        return turnosDTO;
+        return appointmentDTO;
     }
 
     @Override
     public AppointmentDTO getAppointment(Long id) {
         AppointmentDTO appointmentDTO = null;
-        Optional<Appointment> turno = turnoRepository.findById(id);
-        if (turno.isPresent()) {
-            appointmentDTO = mapper.convertValue(turno, AppointmentDTO.class);
+        Optional<Appointment> appointment = appointmentRepository.findById(id);
+        if (appointment.isPresent()) {
+            appointmentDTO = mapper.convertValue(appointment, AppointmentDTO.class);
         }
         return appointmentDTO;
     }
 
     @Override
     public void deleteAppointment(Long id) {
-        turnoRepository.deleteById(id);
+        appointmentRepository.deleteById(id);
     }
 
     @Override
     public void addAppointment(AppointmentDTO appointmentDTO) {
         Appointment appointment = mapper.convertValue(appointmentDTO, Appointment.class);
-        turnoRepository.save(appointment);
+        appointmentRepository.save(appointment);
     }
 
     @Override
     public void editAppointment(AppointmentDTO appointmentDTO) {
         Appointment appointment = mapper.convertValue(appointmentDTO, Appointment.class);
-        turnoRepository.save(appointment);
+        appointmentRepository.save(appointment);
     }
 }

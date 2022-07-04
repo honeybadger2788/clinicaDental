@@ -13,7 +13,7 @@ import java.util.*;
 @Service
 public class DentistService implements IDentistService {
     @Autowired
-    IDentistRepository odontologoRepository;
+    IDentistRepository dentistRepository;
 
     @Autowired
     ObjectMapper mapper;
@@ -21,39 +21,39 @@ public class DentistService implements IDentistService {
     @Override
     public void addDentist(DentistDTO dentistDTO) {
         Dentist dentist = mapper.convertValue(dentistDTO, Dentist.class);
-        odontologoRepository.save(dentist);
+        dentistRepository.save(dentist);
     }
 
     @Override
     public DentistDTO getDentist(Long id) {
         DentistDTO dentistDTO = null;
-        Optional<Dentist> odontologo = odontologoRepository.findById(id);
-        if (odontologo.isPresent()) {
-            dentistDTO = mapper.convertValue(odontologo, DentistDTO.class);
+        Optional<Dentist> dentist = dentistRepository.findById(id);
+        if (dentist.isPresent()) {
+            dentistDTO = mapper.convertValue(dentist, DentistDTO.class);
         }
         return dentistDTO;
     }
 
     @Override
     public Collection<DentistDTO> listDentists() {
-        Set<DentistDTO> odontologosDTO = new HashSet<>();
-        List<Dentist> dentists = odontologoRepository.findAll();
+        Set<DentistDTO> dentistsDTO = new HashSet<>();
+        List<Dentist> dentists = dentistRepository.findAll();
         for (Dentist dentist :
                 dentists) {
-            odontologosDTO.add(mapper.convertValue(dentist, DentistDTO.class));
+            dentistsDTO.add(mapper.convertValue(dentist, DentistDTO.class));
         }
-        return odontologosDTO;
+        return dentistsDTO;
     }
 
     @Override
     public void editDentist(DentistDTO dentistDTO) {
         Dentist dentist = mapper.convertValue(dentistDTO, Dentist.class);
-        odontologoRepository.save(dentist);
+        dentistRepository.save(dentist);
     }
 
     @Override
     public void deleteDentist(Long id) {
-        odontologoRepository.deleteById(id);
+        dentistRepository.deleteById(id);
     }
 }
 

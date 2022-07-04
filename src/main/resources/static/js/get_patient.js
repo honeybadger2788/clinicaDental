@@ -1,4 +1,4 @@
-function getPatient (id) {
+function getPatient(id) {
     const url = '/patients/'+id
 
     const requestOptions = {

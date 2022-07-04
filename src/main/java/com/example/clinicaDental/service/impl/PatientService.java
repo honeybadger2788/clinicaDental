@@ -16,7 +16,7 @@ public class PatientService implements IPatientService {
     // reemplaza al
     // private static IDao<Paciente> pacienteDao = new PacienteDao();
     @Autowired
-    IPatientRepository pacienteRepository;
+    IPatientRepository patientRepository;
 
     /* reemplaza a
     public PacienteService(IDao<Paciente> pacienteDao) {
@@ -34,41 +34,41 @@ public class PatientService implements IPatientService {
         // como recibo un pacienteDTO, debo mappear el objeto antes de poder cargarlo
         // el mapper sirve para asignar los valores del dto al paciente
         Patient patient = mapper.convertValue(patientDTO, Patient.class);
-        pacienteRepository.save(patient);
+        patientRepository.save(patient);
     }
 
     @Override
     public PatientDTO getPatient(Long id){
         PatientDTO patientDTO = null;
         // lo hace opcional porque puede ser nulo
-        Optional<Patient> paciente = pacienteRepository.findById(id);
-        if (paciente.isPresent()){
+        Optional<Patient> patient = patientRepository.findById(id);
+        if (patient.isPresent()){
             // para convertir un paciente a un pacienteDTO
-            patientDTO = mapper.convertValue(paciente, PatientDTO.class);
+            patientDTO = mapper.convertValue(patient, PatientDTO.class);
         }
         return patientDTO;
     }
 
     @Override
     public Collection<PatientDTO> listPatients(){
-        Set<PatientDTO> pacientesDTO = new HashSet<>();
-        List<Patient> patients = pacienteRepository.findAll();
+        Set<PatientDTO> patientsDTO = new HashSet<>();
+        List<Patient> patients = patientRepository.findAll();
         for (Patient patient :
                 patients) {
-            pacientesDTO.add(mapper.convertValue(patient, PatientDTO.class));
+            patientsDTO.add(mapper.convertValue(patient, PatientDTO.class));
         }
-        return pacientesDTO;
+        return patientsDTO;
     }
 
     @Override
     public void editPatient(PatientDTO patientDTO){
         Patient patient = mapper.convertValue(patientDTO, Patient.class);
-        pacienteRepository.save(patient);
+        patientRepository.save(patient);
     }
 
     @Override
     public void deletePatient(Long id){
-        pacienteRepository.deleteById(id);
+        patientRepository.deleteById(id);
     }
 
 }

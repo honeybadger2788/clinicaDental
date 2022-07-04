@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="pacientes")
+@Table(name="patients")
 // @Getter @Setter para que los genere el framework automaticamente
 public class Patient {
     @Id
@@ -35,13 +35,17 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(String lastName, String firstName, String dni, String email, LocalDate admissionDate, Address address) {
+    public Patient(String lastName, String firstName, String dni, String email, Address address) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.dni = dni;
         this.email = email;
-        this.admissionDate = admissionDate;
+        this.admissionDate = LocalDate.now();
         this.address = address;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getLastName() {
