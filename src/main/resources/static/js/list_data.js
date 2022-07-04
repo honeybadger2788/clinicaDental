@@ -1,27 +1,26 @@
 window.addEventListener('load',() => {
-const urlPacientes = '/pacientes'
-const urlOdontologos = '/odontologos'
-const urlTurnos = '/turnos/crear'
+const urlPatient = '/patients'
+const urlDentist = '/dentists'
 
 const requestOptions = {
   method: 'GET'
 };
 
-fetch(urlPacientes, requestOptions)
+fetch(urlPatient, requestOptions)
   .then(response => response.json())
   .then(data => {
-    for( paciente of data){
-        const element =  '<option id="p'+paciente.id+'" value=\"'+paciente.id+'\">'+paciente.dni+' - '+paciente.apellido+', '+paciente.nombre+'</option>'
+    for( patient of data){
+        const element =  '<option id="p'+patient.id+'" value=\"'+patient.id+'\">'+patient.dni+' - '+patient.lastName+', '+patient.firstName+'</option>'
         document.getElementById("paciente").innerHTML += element
     }
   })
   .catch(error => console.log('error', error));
 
-  fetch(urlOdontologos, requestOptions)
+  fetch(urlDentist, requestOptions)
     .then(response => response.json())
     .then(data => {
-      for( odontologo of data){
-          const element =  '<option id="o'+odontologo.id+'" value=\"'+odontologo.id+'\">'+odontologo.matricula+' - '+odontologo.apellido+', '+odontologo.nombre+'</option>'
+      for( dentist of data){
+          const element =  '<option id="o'+odontologo.id+'" value=\"'+odontologo.id+'\">'+odontologo.licence+' - '+odontologo.lastName+', '+odontologo.firstName+'</option>'
           document.getElementById("odontologo").innerHTML += element
       }
     })
