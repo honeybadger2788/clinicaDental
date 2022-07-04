@@ -16,6 +16,7 @@
     <script type="text/javascript" src="/js/delete_appointment.js"></script>
     <script type="text/javascript" src="/js/get_appointment.js"></script>
     <script type="text/javascript" src="/js/put_appointment.js"></script>
+    <script type="text/javascript" src="/js/form_validation.js"></script>
 </head>
 <body class="bg-dark">
 <nav class="nav nav-pills nav-fill p-3">
@@ -43,25 +44,37 @@
     <h2 class="h2 p-3 text-white">Editar Turno</h2>
     <form>
         <div class="mb-3">
-            <label class="text-white" for="fechaTurno">Fecha</label>
-            <input id="fechaTurno" type="date" class="form-control">
+            <label class="text-white" for="dateAppointment">Fecha</label>
+            <input id="dateAppointment" type="date" class="form-control">
+            <div id="dateAppointmentError" class="alert alert-danger d-none mt-3">
+                Por favor, ingresa una fecha
+            </div>
         </div>
 
         <div class="mb-3">
-            <label class="text-white" for="horaTurno">Hora</label>
-            <input id="horaTurno" type="time" class="form-control">
+            <label class="text-white" for="timeAppointment">Hora</label>
+            <input id="timeAppointment" type="time" class="form-control">
+            <div id="timeAppointmentError" class="alert alert-danger d-none mt-3">
+                Por favor, ingresa una hora
+            </div>
         </div>
 
         <div class="mb-3">
             <label class="text-white">Paciente</label>
             <select id="patient" class="form-select">
             </select>
+            <div id="patientError" class="alert alert-danger d-none mt-3">
+                Por favor, ingresa un paciente
+            </div>
         </div>
 
         <div class="mb-3">
             <label class="text-white">Odontologo</label>
             <select id="dentist" class="form-select">
             </select>
+            <div id="dentistError" class="alert alert-danger d-none mt-3">
+                Por favor, ingresa un odontologo
+            </div>
         </div>
 
         <div id="myBtn"></div>

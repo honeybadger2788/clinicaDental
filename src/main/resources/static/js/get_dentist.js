@@ -9,10 +9,10 @@ function getDentist (id) {
         .then(response => response.json())
         .then(result => {
             document.getElementById("form").classList.toggle("d-none")
-            document.querySelector('#nombre').value = result.firstName
-            document.querySelector('#apellido').value = result.lastName
-            document.querySelector('#matricula').value = result.licence
-            document.querySelector('#myBtn').innerHTML ='<button class="btn btn-primary" type="submit" onclick="save('+id+')">GUARDAR</button>'
+            document.querySelector('#firstName').value = result.firstName
+            document.querySelector('#lastName').value = result.lastName
+            document.querySelector('#licence').value = result.licence
+            document.querySelector('#myBtn').innerHTML ='<button class="btn btn-primary" type="submit" onsubmit="save('+id+')">GUARDAR</button>'
         })
         .catch(error => console.log(error));
 }

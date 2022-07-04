@@ -7,8 +7,8 @@ const url = '/appointments/edit'
 
 const formData = {
     id,
-    dateAppointment: document.querySelector('#fechaTurno').value,
-    timeAppointment: document.querySelector('#horaTurno').value,
+    dateAppointment: document.querySelector('#dateAppointment').value,
+    timeAppointment: document.querySelector('#timeAppointment').value,
     patient: { id: document.querySelector('#patient').value },
     dentist: { id: document.querySelector('#dentist').value },
 }

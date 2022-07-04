@@ -6,15 +6,15 @@ myHeaders.append("Content-Type", "application/json");
 const url = '/patients/add'
 
 const formData = {
-    firstName: document.querySelector('#nombre').value,
-    lastName: document.querySelector('#apellido').value,
+    firstName: document.querySelector('#firstName').value,
+    lastName: document.querySelector('#lastName').value,
     dni: document.querySelector('#dni').value,
     email: document.querySelector('#email').value,
     address: {
-        street: document.querySelector('#calle').value,
-        number: document.querySelector('#numero').value,
-        city: document.querySelector('#localidad').value,
-        province: document.querySelector('#provincia').value,
+        street: document.querySelector('#street').value,
+        number: document.querySelector('#number').value,
+        city: document.querySelector('#city').value,
+        province: document.querySelector('#province').value,
     }
 }
 

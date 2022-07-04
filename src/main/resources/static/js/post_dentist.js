@@ -6,9 +6,9 @@ myHeaders.append("Content-Type", "application/json")
 const url = '/dentists/add'
 
 const formData = {
-    firstName: document.querySelector('#nombre').value,
-    lastName: document.querySelector('#apellido').value,
-    licence: document.querySelector('#matricula').value,
+    firstName: document.querySelector('#firstName').value,
+    lastName: document.querySelector('#lastName').value,
+    licence: document.querySelector('#licence').value,
 }
 
 const requestOptions = {

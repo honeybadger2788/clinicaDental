@@ -7,9 +7,9 @@ const url = '/dentists/edit'
 
 const formData = {
     id,
-    firstName: document.querySelector('#nombre').value,
-    lastName: document.querySelector('#apellido').value,
-    licence: document.querySelector('#matricula').value,
+    firstName: document.querySelector('#firstName').value,
+    lastName: document.querySelector('#lastName').value,
+    licence: document.querySelector('#licence').value,
 }
 
 const requestOptions = {
