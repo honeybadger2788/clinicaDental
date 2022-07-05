@@ -1,6 +1,7 @@
 package com.example.clinicaDental.controller;
 
 import com.example.clinicaDental.dto.DentistDTO;
+import com.example.clinicaDental.exceptions.ResourceNotFoundException;
 import com.example.clinicaDental.service.IDentistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,7 @@ public class DentistController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity getDentist(@PathVariable Long id) {
+    public ResponseEntity getDentist(@PathVariable Long id) throws ResourceNotFoundException {
         return new ResponseEntity<>(dentistService.getDentist(id), HttpStatus.OK);
     }
 
@@ -32,13 +33,13 @@ public class DentistController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteDentist(@PathVariable Long id) {
+    public ResponseEntity deleteDentist(@PathVariable Long id) throws ResourceNotFoundException {
         dentistService.deleteDentist(id);
         return new ResponseEntity<>("Dentist deleted", HttpStatus.ACCEPTED);
     }
 
     @PutMapping("/edit")
-    public ResponseEntity putDentist(@RequestBody DentistDTO dentistDTO) {
+    public ResponseEntity putDentist(@RequestBody DentistDTO dentistDTO) throws ResourceNotFoundException {
         dentistService.editDentist(dentistDTO);
         return new ResponseEntity<>("Dentist edited", HttpStatus.CREATED);
     }

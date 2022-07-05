@@ -2,6 +2,7 @@ package com.example.clinicaDental.service.impl;
 
 import com.example.clinicaDental.dto.DentistDTO;
 import com.example.clinicaDental.entity.Dentist;
+import com.example.clinicaDental.exceptions.ResourceNotFoundException;
 import com.example.clinicaDental.repository.IDentistRepository;
 import com.example.clinicaDental.service.IDentistService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,11 +26,13 @@ public class DentistService implements IDentistService {
     }
 
     @Override
-    public DentistDTO getDentist(Long id) {
+    public DentistDTO getDentist(Long id) throws ResourceNotFoundException{
         DentistDTO dentistDTO = null;
         Optional<Dentist> dentist = dentistRepository.findById(id);
         if (dentist.isPresent()) {
             dentistDTO = mapper.convertValue(dentist, DentistDTO.class);
+        } else {
+            throw new ResourceNotFoundException("Dentist Not Found");
         }
         return dentistDTO;
     }
@@ -46,13 +49,17 @@ public class DentistService implements IDentistService {
     }
 
     @Override
-    public void editDentist(DentistDTO dentistDTO) {
+    public void editDentist(DentistDTO dentistDTO) throws ResourceNotFoundException {
+        if(getDentist(dentistDTO.getId()) == null)
+            throw new ResourceNotFoundException("Dentist Not Found");
         Dentist dentist = mapper.convertValue(dentistDTO, Dentist.class);
         dentistRepository.save(dentist);
     }
 
     @Override
-    public void deleteDentist(Long id) {
+    public void deleteDentist(Long id) throws ResourceNotFoundException {
+        if(getDentist(id) == null)
+            throw new ResourceNotFoundException("Dentist Not Found");
         dentistRepository.deleteById(id);
     }
 }

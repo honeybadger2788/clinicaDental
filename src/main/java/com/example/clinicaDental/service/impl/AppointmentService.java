@@ -2,6 +2,7 @@ package com.example.clinicaDental.service.impl;
 
 import com.example.clinicaDental.dto.AppointmentDTO;
 import com.example.clinicaDental.entity.Appointment;
+import com.example.clinicaDental.exceptions.ResourceNotFoundException;
 import com.example.clinicaDental.repository.IAppointmentRepository;
 import com.example.clinicaDental.service.IAppointmentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,17 +33,21 @@ public class AppointmentService implements IAppointmentService {
     }
 
     @Override
-    public AppointmentDTO getAppointment(Long id) {
+    public AppointmentDTO getAppointment(Long id) throws ResourceNotFoundException {
         AppointmentDTO appointmentDTO = null;
         Optional<Appointment> appointment = appointmentRepository.findById(id);
         if (appointment.isPresent()) {
             appointmentDTO = mapper.convertValue(appointment, AppointmentDTO.class);
+        } else {
+            throw new ResourceNotFoundException("Appointment Not Found");
         }
         return appointmentDTO;
     }
 
     @Override
-    public void deleteAppointment(Long id) {
+    public void deleteAppointment(Long id) throws ResourceNotFoundException {
+        if(getAppointment(id) == null )
+            throw new ResourceNotFoundException("Appointment Not Found");
         appointmentRepository.deleteById(id);
     }
 
@@ -53,7 +58,9 @@ public class AppointmentService implements IAppointmentService {
     }
 
     @Override
-    public void editAppointment(AppointmentDTO appointmentDTO) {
+    public void editAppointment(AppointmentDTO appointmentDTO) throws ResourceNotFoundException {
+        if(getAppointment(appointmentDTO.getId()) == null)
+            throw new ResourceNotFoundException("Appointment Not Found");
         Appointment appointment = mapper.convertValue(appointmentDTO, Appointment.class);
         appointmentRepository.save(appointment);
     }

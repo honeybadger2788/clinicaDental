@@ -1,4 +1,4 @@
-package com.example.clinicaDental;
+package com.example.clinicaDental.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,6 @@ import org.apache.log4j.*;
 // al poner la anotación @ControllerAdvice, no es necesario poner el throw en cada metodo
 @ControllerAdvice
 public class GlobalExceptionHandler {
-
     private static final Logger logger = Logger.getLogger(GlobalExceptionHandler.class);
 
     // para que maneje todas las excepciones del tipo excepcion (bien general).
@@ -20,5 +19,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity allError(Exception ex, WebRequest req) {
         logger.error(ex.getMessage());
         return new ResponseEntity(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity notFoundError(ResourceNotFoundException ex){
+        return new ResponseEntity(ex.getMessage(),HttpStatus.NOT_FOUND);
     }
 }

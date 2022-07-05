@@ -1,6 +1,7 @@
 package com.example.clinicaDental.controller;
 
 import com.example.clinicaDental.dto.AppointmentDTO;
+import com.example.clinicaDental.exceptions.ResourceNotFoundException;
 import com.example.clinicaDental.service.IAppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,18 +29,18 @@ public class AppointmentController {
     }
 
     @PutMapping("/edit")
-    public ResponseEntity putAppointment(@RequestBody AppointmentDTO appointmentDTO){
+    public ResponseEntity putAppointment(@RequestBody AppointmentDTO appointmentDTO) throws ResourceNotFoundException {
         appointmentService.editAppointment(appointmentDTO);
         return new ResponseEntity<>("Appointment edited", HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity getAppointment(@PathVariable Long id) {
+    public ResponseEntity getAppointment(@PathVariable Long id) throws ResourceNotFoundException {
         return new ResponseEntity<>(appointmentService.getAppointment(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteAppointment(@PathVariable Long id) {
+    public ResponseEntity deleteAppointment(@PathVariable Long id) throws ResourceNotFoundException {
         appointmentService.deleteAppointment(id);
         return new ResponseEntity<>("Appointment deleted", HttpStatus.ACCEPTED);
     }

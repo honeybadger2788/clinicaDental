@@ -2,6 +2,7 @@ package com.example.clinicaDental.service.impl;
 
 import com.example.clinicaDental.dto.PatientDTO;
 import com.example.clinicaDental.entity.Patient;
+import com.example.clinicaDental.exceptions.ResourceNotFoundException;
 import com.example.clinicaDental.repository.IPatientRepository;
 import com.example.clinicaDental.service.IPatientService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -30,7 +31,7 @@ public class PatientService implements IPatientService {
     ObjectMapper mapper;
 
     @Override
-    public void addPatient(PatientDTO patientDTO){
+    public void addPatient(PatientDTO patientDTO) {
         // como recibo un pacienteDTO, debo mappear el objeto antes de poder cargarlo
         // el mapper sirve para asignar los valores del dto al paciente
         Patient patient = mapper.convertValue(patientDTO, Patient.class);
@@ -38,13 +39,15 @@ public class PatientService implements IPatientService {
     }
 
     @Override
-    public PatientDTO getPatient(Long id){
+    public PatientDTO getPatient(Long id) throws ResourceNotFoundException {
         PatientDTO patientDTO = null;
         // lo hace opcional porque puede ser nulo
         Optional<Patient> patient = patientRepository.findById(id);
         if (patient.isPresent()){
             // para convertir un paciente a un pacienteDTO
             patientDTO = mapper.convertValue(patient, PatientDTO.class);
+        } else {
+            throw new ResourceNotFoundException("Patient Not Found");
         }
         return patientDTO;
     }
@@ -61,13 +64,17 @@ public class PatientService implements IPatientService {
     }
 
     @Override
-    public void editPatient(PatientDTO patientDTO){
+    public void editPatient(PatientDTO patientDTO) throws ResourceNotFoundException {
+        if(getPatient(patientDTO.getId()) == null)
+            throw new ResourceNotFoundException("Patient Not Found");
         Patient patient = mapper.convertValue(patientDTO, Patient.class);
         patientRepository.save(patient);
     }
 
     @Override
-    public void deletePatient(Long id){
+    public void deletePatient(Long id) throws ResourceNotFoundException {
+        if(getPatient(id) == null)
+            throw new ResourceNotFoundException("Patient Not Found");
         patientRepository.deleteById(id);
     }
 

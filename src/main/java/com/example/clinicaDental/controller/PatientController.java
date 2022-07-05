@@ -1,6 +1,7 @@
 package com.example.clinicaDental.controller;
 
 import com.example.clinicaDental.dto.PatientDTO;
+import com.example.clinicaDental.exceptions.ResourceNotFoundException;
 import com.example.clinicaDental.service.IPatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,7 @@ public class PatientController {
     public IPatientService patientService;
 
     @GetMapping("/{id}")
-    public ResponseEntity getPatient(@PathVariable Long id) {
+    public ResponseEntity getPatient(@PathVariable Long id) throws ResourceNotFoundException {
         return new ResponseEntity<>(patientService.getPatient(id),HttpStatus.OK);
     }
     @GetMapping
@@ -32,13 +33,13 @@ public class PatientController {
 
     // se deberán ingresar tanto los campos a editar como los que se quieren preservar
     @PutMapping("/edit")
-    public ResponseEntity putPatient(@RequestBody PatientDTO patientDTO){
+    public ResponseEntity putPatient(@RequestBody PatientDTO patientDTO) throws ResourceNotFoundException {
         patientService.editPatient(patientDTO);
         return new ResponseEntity<>("Patient edited", HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deletePatient(@PathVariable Long id){
+    public ResponseEntity deletePatient(@PathVariable Long id) throws ResourceNotFoundException {
         patientService.deletePatient(id);
         return new ResponseEntity<>("Patient deleted", HttpStatus.ACCEPTED);
     }
