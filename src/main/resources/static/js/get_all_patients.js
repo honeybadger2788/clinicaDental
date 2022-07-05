@@ -8,7 +8,8 @@ const requestOptions = {
 fetch(url, requestOptions)
   .then(response => response.json())
   .then(data => {
-    for( patient of data){
+    const sortedData = data.sort(function(a, b){return a.id-b.id})
+    for( patient of sortedData){
         const element =  '<tr>'+
                              '<td>'+patient.lastName+'</th>'+
                              '<td>'+patient.firstName+'</td>'+

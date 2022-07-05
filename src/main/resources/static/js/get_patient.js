@@ -17,7 +17,7 @@ function getPatient(id) {
             document.querySelector('#number').value = result.address.number
             document.querySelector('#city').value = result.address.city
             document.querySelector('#province').value = result.address.province
-            document.querySelector('#myBtn').innerHTML ='<button class="btn btn-primary" type="submit" onsubmit="save('+id+')">GUARDAR</button>'
+            document.querySelector('#myBtn').innerHTML ='<button class="btn btn-primary" type="submit" onclick="save('+id+')">GUARDAR</button>'
         })
         .catch(error => console.log(error));
 }

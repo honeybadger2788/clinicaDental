@@ -8,7 +8,8 @@ const requestOptions = {
 fetch(url, requestOptions)
   .then(response => response.json())
   .then(data => {
-    for( appointment of data){
+    const sortedData = data.sort(function(a, b){return a.id-b.id})
+    for( appointment of sortedData){
         const element =  '<tr>'+
                              '<td>'+appointment.dateAppointment+' '+appointment.timeAppointment+'</th>'+
                              '<td>'+appointment.patient.dni+' - '+appointment.patient.lastName+', '+appointment.patient.firstName+'</th>'+

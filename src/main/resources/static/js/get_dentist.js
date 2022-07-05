@@ -12,7 +12,7 @@ function getDentist (id) {
             document.querySelector('#firstName').value = result.firstName
             document.querySelector('#lastName').value = result.lastName
             document.querySelector('#licence').value = result.licence
-            document.querySelector('#myBtn').innerHTML ='<button class="btn btn-primary" type="submit" onsubmit="save('+id+')">GUARDAR</button>'
+            document.querySelector('#myBtn').innerHTML ='<button class="btn btn-primary" type="submit" onclick="save('+id+')">GUARDAR</button>'
         })
         .catch(error => console.log(error));
 }

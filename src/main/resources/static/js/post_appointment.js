@@ -1,4 +1,18 @@
-function save() {
+function validateForm() {
+    let formValidated = true
+    const fields = document.querySelectorAll(".form-control")
+     Array.from(fields).forEach(field => {
+     if (!field.value) {
+        formValidated = false
+        event.preventDefault()
+        document.getElementById(field.id+"Error").classList.remove("d-none")
+     }
+    })
+    return formValidated
+}
+
+async function save() {
+if(await validateForm()) {
 event.preventDefault()
 var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
@@ -35,7 +49,7 @@ fetch(url, requestOptions)
         icon: 'error',
         title: 'Oops...',
         text: error.message,
-    })
-  )
+    }))
+  }
 }
 
