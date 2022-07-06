@@ -41,6 +41,9 @@ const requestOptions = {
 fetch(url, requestOptions)
   .then(response => response.text())
   .then(result => {
+        // para capturar el error de paciente ya cargado
+        if(result.status != 201)
+            throw new Error(result)
         Swal.fire({
             position: 'center',
             icon: 'success',

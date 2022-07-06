@@ -1,6 +1,7 @@
 package com.example.clinicaDental.controller;
 
 import com.example.clinicaDental.dto.PatientDTO;
+import com.example.clinicaDental.exceptions.BadRequestException;
 import com.example.clinicaDental.exceptions.ResourceNotFoundException;
 import com.example.clinicaDental.service.IPatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,8 @@ public class PatientController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity postPatient(@RequestBody PatientDTO patientDTO) {
+    public ResponseEntity postPatient(@RequestBody PatientDTO patientDTO) throws BadRequestException {
+        // en el front muestra el mensaje pero da success
         patientService.addPatient(patientDTO);
         return new ResponseEntity<>("Patient created", HttpStatus.CREATED);
     }

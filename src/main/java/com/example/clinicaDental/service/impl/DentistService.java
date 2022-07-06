@@ -2,6 +2,7 @@ package com.example.clinicaDental.service.impl;
 
 import com.example.clinicaDental.dto.DentistDTO;
 import com.example.clinicaDental.entity.Dentist;
+import com.example.clinicaDental.exceptions.BadRequestException;
 import com.example.clinicaDental.exceptions.ResourceNotFoundException;
 import com.example.clinicaDental.repository.IDentistRepository;
 import com.example.clinicaDental.service.IDentistService;
@@ -20,7 +21,9 @@ public class DentistService implements IDentistService {
     ObjectMapper mapper;
 
     @Override
-    public void addDentist(DentistDTO dentistDTO) {
+    public void addDentist(DentistDTO dentistDTO) throws BadRequestException {
+        if(dentistRepository.getDentistByLicence(dentistDTO.getLicence()) != null)
+            throw new BadRequestException("Dentist already exist");
         Dentist dentist = mapper.convertValue(dentistDTO, Dentist.class);
         dentistRepository.save(dentist);
     }

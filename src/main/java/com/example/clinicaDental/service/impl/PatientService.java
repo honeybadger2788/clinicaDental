@@ -2,6 +2,7 @@ package com.example.clinicaDental.service.impl;
 
 import com.example.clinicaDental.dto.PatientDTO;
 import com.example.clinicaDental.entity.Patient;
+import com.example.clinicaDental.exceptions.BadRequestException;
 import com.example.clinicaDental.exceptions.ResourceNotFoundException;
 import com.example.clinicaDental.repository.IPatientRepository;
 import com.example.clinicaDental.service.IPatientService;
@@ -31,9 +32,11 @@ public class PatientService implements IPatientService {
     ObjectMapper mapper;
 
     @Override
-    public void addPatient(PatientDTO patientDTO) {
+    public void addPatient(PatientDTO patientDTO) throws BadRequestException {
         // como recibo un pacienteDTO, debo mappear el objeto antes de poder cargarlo
         // el mapper sirve para asignar los valores del dto al paciente
+        if(patientRepository.getPatientByDni(patientDTO.getDni()) != null)
+            throw new BadRequestException("Patient already exist");
         Patient patient = mapper.convertValue(patientDTO, Patient.class);
         patientRepository.save(patient);
     }

@@ -1,6 +1,7 @@
 package com.example.clinicaDental.controller;
 
 import com.example.clinicaDental.dto.DentistDTO;
+import com.example.clinicaDental.exceptions.BadRequestException;
 import com.example.clinicaDental.exceptions.ResourceNotFoundException;
 import com.example.clinicaDental.service.IDentistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class DentistController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity postDentist(@RequestBody DentistDTO dentistDTO) {
+    public ResponseEntity postDentist(@RequestBody DentistDTO dentistDTO) throws BadRequestException {
         dentistService.addDentist(dentistDTO);
         return new ResponseEntity<>("Dentist created", HttpStatus.CREATED);
     }

@@ -1,0 +1,24 @@
+2022-07-05 17:25:24 ERROR GlobalExceptionHandler:26 - Patient Not Found
+2022-07-05 18:19:47 ERROR GlobalExceptionHandler:20 - Cannot invoke "java.time.LocalTime.format(java.time.format.DateTimeFormatter)" because "timeAppointment" is null
+ at [Source: UNKNOWN; byte offset: #UNKNOWN] (through reference chain: com.example.clinicaDental.entity.Appointment["timeAppointment"])
+2022-07-05 18:19:58 ERROR GlobalExceptionHandler:20 - Cannot invoke "java.time.LocalTime.format(java.time.format.DateTimeFormatter)" because "timeAppointment" is null
+ at [Source: UNKNOWN; byte offset: #UNKNOWN] (through reference chain: com.example.clinicaDental.entity.Appointment["timeAppointment"])
+2022-07-05 18:20:24 ERROR GlobalExceptionHandler:20 - could not execute statement; SQL [n/a]; constraint [FKQYE11A8J9BY998HNPQYBIXNBX]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2022-07-05 18:22:33 ERROR GlobalExceptionHandler:20 - could not execute statement; SQL [n/a]; constraint [FKQYE11A8J9BY998HNPQYBIXNBX]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2022-07-05 18:29:35 ERROR GlobalExceptionHandler:20 - could not execute statement; SQL [n/a]; constraint [FKQYE11A8J9BY998HNPQYBIXNBX]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2022-07-05 18:30:03 ERROR GlobalExceptionHandler:20 - could not execute statement; SQL [n/a]; constraint [FK2QY49B66J7A055M24WBXKK74M]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2022-07-05 18:50:45 ERROR GlobalExceptionHandler:20 - Cannot invoke "com.example.clinicaDental.repository.IPatientRepository.findById(Object)" because "this.patientRepository" is null
+2022-07-05 18:55:57 ERROR GlobalExceptionHandler:20 - Cannot invoke "com.example.clinicaDental.repository.IPatientRepository.findById(Object)" because "this.patientRepository" is null
+2022-07-05 19:32:25 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-05 19:37:25 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-06 16:48:23 ERROR GlobalExceptionHandler:20 - No converter found capable of converting from type [com.example.clinicaDental.entity.Dentist] to type [com.example.clinicaDental.entity.Patient]
+2022-07-06 16:48:41 ERROR GlobalExceptionHandler:20 - No converter found capable of converting from type [com.example.clinicaDental.entity.Dentist] to type [com.example.clinicaDental.entity.Patient]
+2022-07-06 16:50:55 ERROR GlobalExceptionHandler:32 - Dentist already exist
+2022-07-06 16:51:08 ERROR GlobalExceptionHandler:32 - Dentist already exist
+2022-07-06 16:57:34 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-06 16:59:21 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-06 17:02:23 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-06 17:03:58 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-06 17:07:08 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-06 17:08:45 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-06 17:10:14 ERROR GlobalExceptionHandler:32 - Patient already exist
