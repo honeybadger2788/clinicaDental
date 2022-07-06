@@ -4,7 +4,10 @@ import com.example.clinicaDental.dto.AppointmentDTO;
 import com.example.clinicaDental.entity.Appointment;
 import com.example.clinicaDental.exceptions.ResourceNotFoundException;
 import com.example.clinicaDental.repository.IAppointmentRepository;
+import com.example.clinicaDental.repository.IPatientRepository;
 import com.example.clinicaDental.service.IAppointmentService;
+import com.example.clinicaDental.service.IDentistService;
+import com.example.clinicaDental.service.IPatientService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,12 @@ public class AppointmentService implements IAppointmentService {
 
     @Autowired
     IAppointmentRepository appointmentRepository;
+
+    // inicialia los servicios de paciente y odontologo para usarlos como validacion al crear un nuevo turno
+    @Autowired
+    IPatientService patientService;
+    @Autowired
+    IDentistService dentistService;
 
     @Autowired
     ObjectMapper mapper;
@@ -52,7 +61,11 @@ public class AppointmentService implements IAppointmentService {
     }
 
     @Override
-    public void addAppointment(AppointmentDTO appointmentDTO) {
+    public void addAppointment(AppointmentDTO appointmentDTO) throws ResourceNotFoundException {
+        if (patientService.getPatient(appointmentDTO.getPatient().getId()) == null)
+            throw new ResourceNotFoundException("Patient Not Found");
+        else if (dentistService.getDentist(appointmentDTO.getDentist().getId()) == null)
+            throw new ResourceNotFoundException("Dentist Not Found");
         Appointment appointment = mapper.convertValue(appointmentDTO, Appointment.class);
         appointmentRepository.save(appointment);
     }

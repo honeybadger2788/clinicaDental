@@ -22,3 +22,5 @@
 2022-07-06 17:07:08 ERROR GlobalExceptionHandler:32 - Patient already exist
 2022-07-06 17:08:45 ERROR GlobalExceptionHandler:32 - Patient already exist
 2022-07-06 17:10:14 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-06 17:54:01 ERROR GlobalExceptionHandler:26 - Patient Not Found
+2022-07-06 17:54:12 ERROR GlobalExceptionHandler:26 - Dentist Not Found

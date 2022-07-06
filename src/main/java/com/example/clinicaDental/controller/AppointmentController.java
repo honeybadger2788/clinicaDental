@@ -23,7 +23,7 @@ public class AppointmentController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity addAppointment(@RequestBody AppointmentDTO appointmentDTO) {
+    public ResponseEntity addAppointment(@RequestBody AppointmentDTO appointmentDTO) throws ResourceNotFoundException {
         appointmentService.addAppointment(appointmentDTO);
         return new ResponseEntity<>("Appointment created", HttpStatus.CREATED);
     }

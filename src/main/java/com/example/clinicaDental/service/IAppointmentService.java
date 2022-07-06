@@ -12,7 +12,7 @@ public interface IAppointmentService {
 
     public void deleteAppointment(Long id) throws ResourceNotFoundException;
 
-    public void addAppointment(AppointmentDTO appointmentDTO);
+    public void addAppointment(AppointmentDTO appointmentDTO) throws ResourceNotFoundException;
 
     public void editAppointment(AppointmentDTO appointmentDTO) throws ResourceNotFoundException;
 }
