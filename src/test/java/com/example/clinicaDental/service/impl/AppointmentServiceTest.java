@@ -10,19 +10,4 @@ class AppointmentServiceTest {
     void listAppointments() {
     }
 
-    @Test
-    void getAppointment() {
-    }
-
-    @Test
-    void deleteAppointment() {
-    }
-
-    @Test
-    void addAppointment() {
-    }
-
-    @Test
-    void editAppointment() {
-    }
 }

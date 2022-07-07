@@ -11,5 +11,5 @@ import java.util.Set;
 @Repository
 public interface IPatientRepository extends JpaRepository<Patient, Long> {
     @Query("from Patient p where p.dni = ?1 order by p.dni")
-    Set<Patient> findByDni(String dni); //NO FUNCA!!!
+    Set<Patient> findByDni(String dni);
 }

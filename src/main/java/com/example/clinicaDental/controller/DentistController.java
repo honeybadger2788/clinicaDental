@@ -30,7 +30,7 @@ public class DentistController {
     @PostMapping("/add")
     public ResponseEntity postDentist(@RequestBody DentistDTO dentistDTO) throws BadRequestException {
         dentistService.addDentist(dentistDTO);
-        return new ResponseEntity("Dentist created", HttpStatus.CREATED);
+        return new ResponseEntity<>("Dentist created", HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

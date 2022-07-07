@@ -7,9 +7,14 @@ import com.example.clinicaDental.exceptions.BadRequestException;
 import com.example.clinicaDental.exceptions.ResourceNotFoundException;
 import com.example.clinicaDental.repository.IPatientRepository;
 import com.example.clinicaDental.service.IPatientService;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Collection;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,27 +24,27 @@ class PatientServiceTest {
     IPatientService patientService;
 
     @Test
-    void getPatient() throws BadRequestException, ResourceNotFoundException {
-        /*PatientDTO patientDTO = new PatientDTO();
+    void listPatients() {
+        Collection<PatientDTO> patients = patientService.listPatients();
+        assertTrue( patients.size()>0);
+    }
+
+    @Test
+    void findByDni() throws BadRequestException, ResourceNotFoundException {
+        PatientDTO patientDTO = new PatientDTO();
         patientDTO.setFirstName("Test");
         patientDTO.setLastName("Test");
-        patientDTO.setDni("99999");
-        patientDTO.setAddress(new Address("Test", 123, "Test","Test"));
+        patientDTO.setDni("123Test");
+        patientDTO.setEmail("Test@test.com");
+        patientDTO.setAddress(new Address("Test",123,"Test","Test"));
 
         patientService.addPatient(patientDTO);
-        PatientDTO patient = patientService.getPatient(patientDTO.getId());
-        assertTrue(patient.equals(patientDTO));*/
-    }
 
-    @Test
-    void listPatients() {
-    }
-
-    @Test
-    void editPatient() {
-    }
-
-    @Test
-    void deletePatient() {
+        Collection<PatientDTO> patients = patientService.findByDni(patientDTO.getDni());
+        assertTrue(patients.size()>0);
+        for (PatientDTO patient:
+             patients) {
+            patientService.deletePatient(patient.getId());
+        }
     }
 }

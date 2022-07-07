@@ -18,5 +18,5 @@ public interface IDentistService {
 
     public void deleteDentist(Long id) throws ResourceNotFoundException;
 
-    public Collection<Dentist> findByLicence(String licence);
+    public Collection<DentistDTO> findByLicence(String licence);
 }

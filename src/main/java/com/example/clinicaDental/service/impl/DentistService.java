@@ -21,10 +21,14 @@ public class DentistService implements IDentistService {
     ObjectMapper mapper;
 
     @Override
-    public Collection<Dentist> findByLicence(String licence) {
-        Set<Dentist> dentist = dentistRepository.findByLicence(licence);
-        System.out.println(dentist);
-        return dentist;
+    public Collection<DentistDTO> findByLicence(String licence) {
+        Set<DentistDTO> dentistsDTO = new HashSet<>();
+        Collection<Dentist> dentists = dentistRepository.findByLicence(licence);
+        for (Dentist dentist :
+                dentists) {
+            dentistsDTO.add(mapper.convertValue(dentist, DentistDTO.class));
+        }
+        return dentistsDTO;
     }
 
     @Override
