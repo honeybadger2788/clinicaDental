@@ -1,6 +1,7 @@
 package com.example.clinicaDental.service;
 
 import com.example.clinicaDental.dto.DentistDTO;
+import com.example.clinicaDental.entity.Dentist;
 import com.example.clinicaDental.exceptions.BadRequestException;
 import com.example.clinicaDental.exceptions.ResourceNotFoundException;
 
@@ -16,4 +17,6 @@ public interface IDentistService {
     public void editDentist(DentistDTO dentistDTO) throws ResourceNotFoundException;
 
     public void deleteDentist(Long id) throws ResourceNotFoundException;
+
+    public Collection<Dentist> findByLicence(String licence);
 }

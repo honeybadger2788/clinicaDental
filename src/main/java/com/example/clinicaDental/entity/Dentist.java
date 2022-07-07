@@ -15,7 +15,7 @@ public class Dentist {
     private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy = "dentist")
+    @OneToMany(mappedBy = "dentist", cascade = CascadeType.ALL)
     private Set<Appointment> appointments = new HashSet<>();
 
     public Dentist() {

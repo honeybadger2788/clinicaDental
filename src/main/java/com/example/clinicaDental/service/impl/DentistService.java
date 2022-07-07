@@ -21,8 +21,15 @@ public class DentistService implements IDentistService {
     ObjectMapper mapper;
 
     @Override
+    public Collection<Dentist> findByLicence(String licence) {
+        Set<Dentist> dentist = dentistRepository.findByLicence(licence);
+        System.out.println(dentist);
+        return dentist;
+    }
+
+    @Override
     public void addDentist(DentistDTO dentistDTO) throws BadRequestException {
-        if(dentistRepository.getDentistByLicence(dentistDTO.getLicence()) != null)
+        if(findByLicence(dentistDTO.getLicence()).size() != 0)
             throw new BadRequestException("Dentist already exist");
         Dentist dentist = mapper.convertValue(dentistDTO, Dentist.class);
         dentistRepository.save(dentist);

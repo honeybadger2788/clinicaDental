@@ -28,7 +28,7 @@ public class Patient {
     @JoinColumn(name = "idAddress", referencedColumnName = "id")
     private Address address;
 
-    @OneToMany(mappedBy ="patient")
+    @OneToMany(mappedBy ="patient", cascade = CascadeType.ALL)
     @JsonIgnore // para evitar un bucle infinito por usar el mapper y al tratarse de una relacion bidireccional
     private Set<Appointment> appointments = new HashSet<>();
 

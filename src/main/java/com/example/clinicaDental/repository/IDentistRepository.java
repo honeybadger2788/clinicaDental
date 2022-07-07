@@ -10,6 +10,6 @@ import java.util.Set;
 
 @Repository
 public interface IDentistRepository extends JpaRepository<Dentist,Long> {
-    @Query("select d from Dentist d where d.licence = licence")
-    Set<Dentist> getDentistByLicence(String licence);
+    @Query("from Dentist d where d.licence = ?1 order by d.licence")
+    Set<Dentist> findByLicence(String licence);
 }

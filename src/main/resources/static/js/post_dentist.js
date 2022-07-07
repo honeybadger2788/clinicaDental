@@ -34,8 +34,9 @@ async function save() {
     fetch(url, requestOptions)
         .then(response => response.text())
         .then(result => {
-            if(result.status != 201)
-                throw new Error(result)
+        if(result != 'Dentist created')
+            throw new Error(result)
+        else
             Swal.fire({
              position: 'center',
              icon: 'success',

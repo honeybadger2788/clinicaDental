@@ -24,3 +24,22 @@
 2022-07-06 17:10:14 ERROR GlobalExceptionHandler:32 - Patient already exist
 2022-07-06 17:54:01 ERROR GlobalExceptionHandler:26 - Patient Not Found
 2022-07-06 17:54:12 ERROR GlobalExceptionHandler:26 - Dentist Not Found
+2022-07-06 20:26:42 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-06 20:27:39 ERROR GlobalExceptionHandler:20 - query did not return a unique result: 2; nested exception is javax.persistence.NonUniqueResultException: query did not return a unique result: 2
+2022-07-06 20:28:52 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-06 20:29:09 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-06 20:32:42 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-06 20:35:40 ERROR GlobalExceptionHandler:20 - Failed to convert from type [java.util.LinkedHashSet<?>] to type [@org.springframework.data.jpa.repository.Query java.util.Set<com.example.clinicaDental.entity.Patient>] for value '[1, 33]'; nested exception is org.springframework.core.convert.ConverterNotFoundException: No converter found capable of converting from type [java.lang.Long] to type [@org.springframework.data.jpa.repository.Query com.example.clinicaDental.entity.Patient]
+2022-07-06 20:37:00 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-06 20:40:26 ERROR GlobalExceptionHandler:20 - could not execute statement; SQL [n/a]; constraint ["FK2QY49B66J7A055M24WBXKK74M: PUBLIC.APPOINTMENTS FOREIGN KEY(ID_PATIENT) REFERENCES PUBLIC.PATIENTS(ID) (CAST(1 AS BIGINT))"; SQL statement:
+delete from patients where id=? [23503-212]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2022-07-06 20:40:58 ERROR GlobalExceptionHandler:20 - could not execute statement; SQL [n/a]; constraint ["FK2QY49B66J7A055M24WBXKK74M: PUBLIC.APPOINTMENTS FOREIGN KEY(ID_PATIENT) REFERENCES PUBLIC.PATIENTS(ID) (CAST(1 AS BIGINT))"; SQL statement:
+delete from patients where id=? [23503-212]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2022-07-06 20:42:50 ERROR GlobalExceptionHandler:20 - could not execute statement; SQL [n/a]; constraint ["FK2QY49B66J7A055M24WBXKK74M: PUBLIC.APPOINTMENTS FOREIGN KEY(ID_PATIENT) REFERENCES PUBLIC.PATIENTS(ID) (CAST(1 AS BIGINT))"; SQL statement:
+delete from patients where id=? [23503-212]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2022-07-06 20:46:54 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-06 20:48:06 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-06 20:55:04 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-07 16:58:46 ERROR GlobalExceptionHandler:32 - Dentist already exist
+2022-07-07 16:59:09 ERROR GlobalExceptionHandler:32 - Dentist already exist
+2022-07-07 17:07:04 ERROR GlobalExceptionHandler:32 - Dentist already exist

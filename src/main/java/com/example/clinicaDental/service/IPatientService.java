@@ -17,4 +17,6 @@ public interface IPatientService {
     public void editPatient(PatientDTO patientDTO) throws ResourceNotFoundException;
 
     public void deletePatient(Long id) throws ResourceNotFoundException;
+
+    public Collection<Patient> findByDni(String dni);
 }
