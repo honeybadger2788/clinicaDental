@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,6 +36,9 @@ class DentistServiceTest {
 
         dentistService.addDentist(dentistDTO);
 
-        assertNotNull(dentistService.findByLicence(dentistDTO.getLicence()));
+        Optional<DentistDTO> dentistDTOFound = dentistService.findByLicence(dentistDTO.getLicence());
+        assertNotNull(dentistDTOFound);
+
+        dentistService.deleteDentist(dentistDTOFound.get().getId());
     }
 }

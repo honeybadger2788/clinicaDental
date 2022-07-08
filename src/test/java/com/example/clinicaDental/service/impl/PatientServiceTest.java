@@ -40,6 +40,9 @@ class PatientServiceTest {
 
         patientService.addPatient(patientDTO);
 
-        assertNotNull(patientService.findByDni(patientDTO.getDni()));
+        Optional<PatientDTO> patientDTOFound = patientService.findByDni(patientDTO.getDni());
+        assertNotNull(patientDTOFound);
+
+        patientService.deletePatient(patientDTOFound.get().getId());
     }
 }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.HashSet;
 import java.util.Set;
-/*
+
 @Service
 @Transactional
 public class UserDetailsService implements IUserDetailsService {
@@ -35,4 +35,4 @@ public class UserDetailsService implements IUserDetailsService {
         user = (UserDetails) new User(username,"{noop}"+ appUser.getPassword(), grantList);
         return user;
     }
-}*/
+}

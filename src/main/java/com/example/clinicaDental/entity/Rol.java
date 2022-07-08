@@ -13,10 +13,6 @@ public class Rol {
     private Long id;
     private String description;
 
-    @OneToMany(mappedBy ="rol", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Set<Rol> rol = new HashSet<>();
-
     public Rol() {
     }
 
