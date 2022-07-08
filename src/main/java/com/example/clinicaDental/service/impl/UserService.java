@@ -3,36 +3,39 @@ package com.example.clinicaDental.service.impl;
 import com.example.clinicaDental.entity.Rol;
 import com.example.clinicaDental.entity.User;
 import com.example.clinicaDental.repository.IUserRepository;
-import com.example.clinicaDental.service.IUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
 @Transactional
-public class UserDetailsService implements IUserDetailsService {
+public class UserService implements UserDetailsService {
     @Autowired
     IUserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) {
-        User appUser = userRepository.findByUsername(username);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> appUser = userRepository.findByUsername(username);
 
-        Set<GrantedAuthority> grantList = new HashSet<GrantedAuthority>();
+        Set<GrantedAuthority> grantList = new HashSet<>();
         for (Rol rol:
-             appUser.getRoles()) {
+                appUser.get().getRoles()) {
             GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(rol.getDescription());
             grantList.add(grantedAuthority);
         }
 
         UserDetails user = null;
-        user = (UserDetails) new User(username,"{noop}"+ appUser.getPassword(), grantList);
+        // cambié el primer parametro porque le estoy pasando un usuario aunque no lo encuentre en la linea 27
+        user = (UserDetails) new User(appUser.get().getUsername(),"{noop}"+ appUser.get().getPassword(), grantList);
         return user;
     }
 }

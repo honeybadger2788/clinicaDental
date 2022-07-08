@@ -1,12 +1,14 @@
 package com.example.clinicaDental.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -15,7 +17,11 @@ public class User {
     private String username;
     private String password;
 
-    private List<Rol> roles;
+    // FetchType.EAGER para que traiga los roles al crear el usuario
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "UserRoles", joinColumns = @JoinColumn(name = "idUser"), inverseJoinColumns = @JoinColumn(name = "idRol"))
+    private Set<Rol> roles = new HashSet<>();
+
 
     public User(String username, String password, Set<GrantedAuthority> grantList) {
     }
@@ -40,11 +46,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Rol> getRoles() {
+    public Set<Rol> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Rol> roles) {
+    public void setRoles(Set<Rol> roles) {
         this.roles = roles;
     }
 

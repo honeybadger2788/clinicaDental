@@ -1,12 +1,9 @@
 package com.example.clinicaDental.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
+@Table(name = "roles")
 public class Rol {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
