@@ -32,22 +32,21 @@ public class PatientService implements IPatientService {
     ObjectMapper mapper;
 
     @Override
-    public Collection<PatientDTO> findByDni(String dni) {
-        Set<PatientDTO> patientsDTO = new HashSet<>();
-        Collection<Patient> patients = patientRepository.findByDni(dni);
-        for (Patient patient :
-                patients) {
-            patientsDTO.add(mapper.convertValue(patient, PatientDTO.class));
+    public Optional<PatientDTO> findByDni(String dni) {
+        Optional<Patient> patient = patientRepository.findByDni(dni);
+        if (patient.isPresent()) {
+            PatientDTO patientDTO = mapper.convertValue(patient, PatientDTO.class);
+            return Optional.ofNullable(patientDTO);
         }
-        return patientsDTO;
+        return null;
     }
 
     @Override
     public void addPatient(PatientDTO patientDTO) throws BadRequestException {
         // como recibo un pacienteDTO, debo mappear el objeto antes de poder cargarlo
         // el mapper sirve para asignar los valores del dto al paciente
-        Collection<PatientDTO> patientExist = findByDni(patientDTO.getDni());
-        if(patientExist.size() != 0)
+        Optional<PatientDTO> patientExist = findByDni(patientDTO.getDni());
+        if(patientExist.isPresent())
             throw new BadRequestException("Patient already exist");
         Patient patient = mapper.convertValue(patientDTO, Patient.class);
         patientRepository.save(patient);

@@ -27,7 +27,7 @@ class DentistServiceTest {
     }
 
     @Test
-    void findByDni() throws BadRequestException, ResourceNotFoundException {
+    void findByLicence() throws BadRequestException, ResourceNotFoundException {
         DentistDTO dentistDTO = new DentistDTO();
         dentistDTO.setFirstName("Test");
         dentistDTO.setLastName("Test");
@@ -35,11 +35,6 @@ class DentistServiceTest {
 
         dentistService.addDentist(dentistDTO);
 
-        Collection<DentistDTO> dentists = dentistService.findByLicence(dentistDTO.getLicence());
-        assertTrue(dentists.size()>0);
-        for (DentistDTO dentist:
-                dentists) {
-            dentistService.deleteDentist(dentist.getId());
-        }
+        assertNotNull(dentistService.findByLicence(dentistDTO.getLicence()));
     }
 }

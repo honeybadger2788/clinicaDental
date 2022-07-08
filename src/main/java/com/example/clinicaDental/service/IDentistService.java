@@ -6,6 +6,7 @@ import com.example.clinicaDental.exceptions.BadRequestException;
 import com.example.clinicaDental.exceptions.ResourceNotFoundException;
 
 import java.util.Collection;
+import java.util.Optional;
 
 public interface IDentistService {
     public void addDentist(DentistDTO dentistDTO) throws BadRequestException;
@@ -18,5 +19,5 @@ public interface IDentistService {
 
     public void deleteDentist(Long id) throws ResourceNotFoundException;
 
-    public Collection<DentistDTO> findByLicence(String licence);
+    public Optional<DentistDTO> findByLicence(String licence);
 }

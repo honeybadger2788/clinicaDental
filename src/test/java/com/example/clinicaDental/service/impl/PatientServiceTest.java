@@ -40,11 +40,6 @@ class PatientServiceTest {
 
         patientService.addPatient(patientDTO);
 
-        Collection<PatientDTO> patients = patientService.findByDni(patientDTO.getDni());
-        assertTrue(patients.size()>0);
-        for (PatientDTO patient:
-             patients) {
-            patientService.deletePatient(patient.getId());
-        }
+        assertNotNull(patientService.findByDni(patientDTO.getDni()));
     }
 }
