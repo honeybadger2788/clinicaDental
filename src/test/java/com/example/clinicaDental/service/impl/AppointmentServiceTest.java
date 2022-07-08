@@ -1,17 +1,16 @@
 package com.example.clinicaDental.service.impl;
 
 import com.example.clinicaDental.dto.AppointmentDTO;
-import com.example.clinicaDental.dto.DentistDTO;
-import com.example.clinicaDental.entity.Appointment;
 import com.example.clinicaDental.service.IAppointmentService;
-import com.example.clinicaDental.service.IDentistService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Collection;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@SpringBootTest
 class AppointmentServiceTest {
 
     @Autowired

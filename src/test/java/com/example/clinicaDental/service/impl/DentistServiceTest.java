@@ -1,8 +1,6 @@
 package com.example.clinicaDental.service.impl;
 
 import com.example.clinicaDental.dto.DentistDTO;
-import com.example.clinicaDental.dto.PatientDTO;
-import com.example.clinicaDental.entity.Address;
 import com.example.clinicaDental.exceptions.BadRequestException;
 import com.example.clinicaDental.exceptions.ResourceNotFoundException;
 import com.example.clinicaDental.service.IDentistService;
@@ -13,7 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Collection;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class DentistServiceTest {
