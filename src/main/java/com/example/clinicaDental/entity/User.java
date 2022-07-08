@@ -46,6 +46,7 @@ public class User {
         this.password = password;
     }
 
+    // Debemos definir getter y setter de la relacion para que traiga los roles al consultar el usuario
     public Set<Rol> getRoles() {
         return roles;
     }
