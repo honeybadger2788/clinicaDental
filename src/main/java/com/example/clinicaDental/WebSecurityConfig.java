@@ -13,11 +13,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/index.html").hasRole("USER")
-                /*.antMatchers("/formDentist.html").hasRole("ADMIN")
+                .antMatchers("/formDentist.html").hasRole("ADMIN")
                 .antMatchers("/formPatient.html").hasRole("ADMIN")
-                .antMatchers("/formAppointment.html").hasRole("ADMIN")*/
-                .anyRequest().permitAll()
+                .antMatchers("/formAppointment.html").hasRole("USER")
+                .antMatchers("/listDentists.html").hasRole("ADMIN")
+                .antMatchers("/listPatients.html").hasRole("ADMIN")
+                .antMatchers("/listAppointments.html").hasRole("USER")
                 .and().formLogin()
-                .and().logout();
+                // estos dos se usan juntos si quiero utilizar cookies
+                .and().rememberMe().key("uniqueAndSecret")
+                .and().logout().deleteCookies("JSESSIONID");
     }
 }
