@@ -33,9 +33,8 @@ public class UserService implements UserDetailsService {
             grantList.add(grantedAuthority);
         }
 
-        UserDetails user = null;
         // cambié el primer parametro porque le estoy pasando un usuario aunque no lo encuentre en la linea 27
-        user = (UserDetails) new User(appUser.get().getUsername(),"{noop}"+ appUser.get().getPassword(), grantList);
-        return user;
+        org.springframework.security.core.userdetails.User userDetails = new org.springframework.security.core.userdetails.User(appUser.get().getUsername(),"{noop}"+appUser.get().getPassword(),grantList);
+        return userDetails;
     }
 }

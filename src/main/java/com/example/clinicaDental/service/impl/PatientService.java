@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+import static java.util.Objects.isNull;
+
 @Service
 public class PatientService implements IPatientService {
 
@@ -46,7 +48,7 @@ public class PatientService implements IPatientService {
         // como recibo un pacienteDTO, debo mappear el objeto antes de poder cargarlo
         // el mapper sirve para asignar los valores del dto al paciente
         Optional<PatientDTO> patientExist = findByDni(patientDTO.getDni());
-        if(patientExist.isPresent())
+        if(!isNull(patientExist))
             throw new BadRequestException("Patient already exist");
         Patient patient = mapper.convertValue(patientDTO, Patient.class);
         patientRepository.save(patient);

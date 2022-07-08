@@ -1,6 +1,7 @@
 package com.example.clinicaDental.service.impl;
 
 import com.example.clinicaDental.dto.DentistDTO;
+import com.example.clinicaDental.dto.PatientDTO;
 import com.example.clinicaDental.entity.Dentist;
 import com.example.clinicaDental.exceptions.BadRequestException;
 import com.example.clinicaDental.exceptions.ResourceNotFoundException;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+
+import static java.util.Objects.isNull;
 
 @Service
 public class DentistService implements IDentistService {
@@ -32,7 +35,8 @@ public class DentistService implements IDentistService {
 
     @Override
     public void addDentist(DentistDTO dentistDTO) throws BadRequestException {
-        if(findByLicence(dentistDTO.getLicence()).isPresent())
+        Optional<DentistDTO> dentistExist = findByLicence(dentistDTO.getLicence());
+        if(!isNull(dentistExist))
             throw new BadRequestException("Dentist already exist");
         Dentist dentist = mapper.convertValue(dentistDTO, Dentist.class);
         dentistRepository.save(dentist);

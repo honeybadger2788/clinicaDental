@@ -23,7 +23,7 @@ public class User {
     private Set<Rol> roles = new HashSet<>();
 
 
-    public User(String username, String password, Set<GrantedAuthority> grantList) {
+    public User() {
     }
 
     public Long getId() {

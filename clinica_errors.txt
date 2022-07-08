@@ -43,3 +43,8 @@ delete from patients where id=? [23503-212]]; nested exception is org.hibernate.
 2022-07-07 16:58:46 ERROR GlobalExceptionHandler:32 - Dentist already exist
 2022-07-07 16:59:09 ERROR GlobalExceptionHandler:32 - Dentist already exist
 2022-07-07 17:07:04 ERROR GlobalExceptionHandler:32 - Dentist already exist
+2022-07-08 15:28:52 ERROR GlobalExceptionHandler:20 - Cannot invoke "java.util.Optional.isPresent()" because "patientExist" is null
+2022-07-08 15:31:00 ERROR GlobalExceptionHandler:20 - Cannot invoke "java.util.Optional.isPresent()" because "patientExist" is null
+2022-07-08 15:33:50 ERROR GlobalExceptionHandler:20 - Cannot invoke "java.util.Optional.isEmpty()" because "patientExist" is null
+2022-07-08 15:35:55 ERROR GlobalExceptionHandler:32 - Patient already exist
+2022-07-08 15:39:00 ERROR GlobalExceptionHandler:32 - Dentist already exist
