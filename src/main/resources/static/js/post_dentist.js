@@ -36,15 +36,14 @@ async function save() {
         .then(result => {
         if(result != 'Dentist created')
             throw new Error(result)
-        else
-            Swal.fire({
-             position: 'center',
-             icon: 'success',
-             title: result,
-             showConfirmButton: false,
-             timer: 1500
-            })
-            .then(result => location.reload())
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: result,
+            showConfirmButton: false,
+            timer: 1500
+        })
+        .then(result => location.reload())
         })
         .catch(error =>
             Swal.fire({

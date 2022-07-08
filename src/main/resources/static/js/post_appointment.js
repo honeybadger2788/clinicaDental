@@ -35,7 +35,7 @@ const requestOptions = {
 fetch(url, requestOptions)
   .then(response => response.text())
   .then(result => {
-        if(result.status != 'Appointment created')
+        if(result != 'Appointment created')
             throw new Error(result)
         Swal.fire({
             position: 'center',
