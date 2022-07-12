@@ -1,4 +1,4 @@
-package com.example.clinicaDental.entity;
+/*package com.example.clinicaDental.entity;
 
 import javax.persistence.*;
 
@@ -17,6 +17,7 @@ public class Rol {
         this.description = description;
     }
 
+
     public Long getId() {
         return id;
     }
@@ -28,4 +29,4 @@ public class Rol {
     public void setDescription(String description) {
         this.description = description;
     }
-}
+}*/
