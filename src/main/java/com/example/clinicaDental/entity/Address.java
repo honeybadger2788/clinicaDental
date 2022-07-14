@@ -1,6 +1,9 @@
 package com.example.clinicaDental.entity;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "addresses")
@@ -9,9 +12,17 @@ public class Address {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+    @NotNull
+    @NotBlank
     private String street;
+    @NotNull
+    @NotBlank
     private int number;
+    @NotNull
+    @NotBlank
     private String city;
+    @NotNull
+    @NotBlank
     private String province;
 
     public Address() {

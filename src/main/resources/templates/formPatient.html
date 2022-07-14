@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="../css/shards.min.css">
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="sweetalert2.all.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
@@ -15,8 +14,8 @@
 </head>
 <body class="bg-dark">
 <nav class="nav nav-pills nav-fill p-3">
-  <a class="nav-link" href="/index.html">Volver</a>
-  <a class="nav-link" href="/listPatients.html">Pacientes</a>
+  <a class="nav-link" th:href="@{/home}">Volver</a>
+  <a class="nav-link" th:href="@{/pacientes}">Pacientes</a>
   <a class="nav-link" href="/logout">Cerrar sesión</a>
 </nav>
 <div class="container p-3">

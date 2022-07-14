@@ -25,14 +25,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable().authorizeRequests()
-                .antMatchers("/user/**","/patients/**","/dentists/**","/appointments/**").permitAll()
-                .antMatchers("/index.html").hasRole("USER")
-                .antMatchers("/formDentist.html").hasRole("ADMIN")
-                .antMatchers("/formPatient.html").hasRole("ADMIN")
-                .antMatchers("/formAppointment.html").hasRole("USER")
-                .antMatchers("/listDentists.html").hasRole("ADMIN")
-                .antMatchers("/listPatients.html").hasRole("ADMIN")
-                .antMatchers("/listAppointments.html").hasRole("USER")
+                .antMatchers("/patients/**","/dentists/**","/appointments/**").permitAll()
+                .antMatchers("/index.html","/turnos/**").hasAnyRole("USER","ADMIN")
+                .antMatchers("/odontologos/**","pacientes/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 // no me toma el formulario propio con el passwordEncoder
                 .and().formLogin(/*form -> form

@@ -1,11 +1,13 @@
 package com.example.clinicaDental.entity;
 
 import com.example.clinicaDental.Role;
+import com.sun.istack.NotNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -16,7 +18,11 @@ public class User implements UserDetails {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
+    @NotNull
+    @NotBlank
     private String username;
+    @NotNull
+    @NotBlank
     private String Password;
 
     /* FetchType.EAGER para que traiga los roles al crear el usuario
@@ -25,6 +31,8 @@ public class User implements UserDetails {
     private Set<Rol> roles = new HashSet<>();*/
 
     @Enumerated(EnumType.STRING)
+    @NotNull
+    @NotBlank
     private Role role;
 
 

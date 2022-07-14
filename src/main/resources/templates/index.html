@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -21,24 +21,24 @@
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pacientes</a>
     <ul class="dropdown-menu dropdown-menu-dark">
-      <li><a class="dropdown-item" href="/formPatient.html">Nuevo</a></li>
-      <li><a class="dropdown-item" href="/listPatients.html">Listado</a></li>
+      <li><a class="dropdown-item" th:href="@{/pacientes/crear}">Nuevo</a></li>
+      <li><a class="dropdown-item" th:href="@{/pacientes}">Listado</a></li>
     </ul>
   </li>
 
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Odontologos</a>
     <ul class="dropdown-menu dropdown-menu-dark">
-      <li><a class="dropdown-item" href="/formDentist.html">Nuevo</a></li>
-      <li><a class="dropdown-item" href="/listDentists.html">Listado</a></li>
+      <li><a class="dropdown-item" th:href="@{/odontologos/crear}">Nuevo</a></li>
+      <li><a class="dropdown-item" th:href="@{/odontologos}">Listado</a></li>
     </ul>
   </li>
 
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Turnos</a>
     <ul class="dropdown-menu dropdown-menu-dark">
-      <li><a class="dropdown-item" href="/formAppointment.html">Nuevo</a></li>
-      <li><a class="dropdown-item" href="/listAppointments.html">Listado</a></li>
+      <li><a class="dropdown-item" th:href="@{/turnos/crear}">Nuevo</a></li>
+      <li><a class="dropdown-item" th:href="@{/turnos}">Listado</a></li>
     </ul>
   </li>
 

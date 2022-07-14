@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -15,8 +15,8 @@
 </head>
 <body class="bg-dark">
 <nav class="nav nav-pills nav-fill p-3">
-  <a class="nav-link" href="/index.html">Volver</a>
-  <a class="nav-link" href="/listDentists.html">Odontologos</a>
+  <a class="nav-link" th:href="@{/home}">Volver</a>
+  <a class="nav-link" th:href="@{/odontologos}">Odontologos</a>
   <a class="nav-link" href="/logout">Cerrar sesión</a>
 </nav>
 <div class="container p-3">

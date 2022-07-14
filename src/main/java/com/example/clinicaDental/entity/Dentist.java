@@ -1,6 +1,9 @@
 package com.example.clinicaDental.entity;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,8 +14,14 @@ public class Dentist {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
+    @NotNull
+    @NotBlank
     private String licence;
+    @NotNull
+    @NotBlank
     private String firstName;
+    @NotNull
+    @NotBlank
     private String lastName;
 
     @OneToMany(mappedBy = "dentist", cascade = CascadeType.ALL)

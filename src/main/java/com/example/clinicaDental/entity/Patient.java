@@ -1,8 +1,10 @@
 package com.example.clinicaDental.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,10 +16,14 @@ public class Patient {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+
     private String lastName;
+
     private String firstName;
     @Column(unique = true)
+
     private String dni;
+
     private String email;
 
     // la fecha de ingreso se guardará por defecto con la fecha de creación del paciente

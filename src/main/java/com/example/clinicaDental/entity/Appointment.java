@@ -1,6 +1,9 @@
 package com.example.clinicaDental.entity;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -10,6 +13,7 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+
     private String dateAppointment;
 
     private String timeAppointment;
@@ -18,9 +22,11 @@ public class Appointment {
     @ManyToOne
     // el en caso de tener una base de datos existente, debemos ingresar el name que figura en la misma
     @JoinColumn(name = "idPatient", nullable = false)
+
     private Patient patient;
     @ManyToOne
     @JoinColumn(name = "idDentist", nullable = false)
+
     private Dentist dentist;
 
     public Appointment() {
